@@ -3,15 +3,15 @@
 
 <html>
 <head>
-    <title>Home</title>
+    <title>Address</title>
     <style><%@include file="css/style.css"%></style>
 </head>
 <body>
 <%@include file="elements/header.jsp" %>
 
 <div>
-<h1>Grupa plus</h1>
-<h2>Obsługa ubezpieczeń grupowych</h2>
+    <h1>Adresy</h1>
+    <h2>Obsługa ubezpieczeń grupowych</h2>
 </div>
 
 <%@include file="elements/footer.jsp" %>
