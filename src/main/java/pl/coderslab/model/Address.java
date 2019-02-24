@@ -12,19 +12,19 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = " Podaj ulicę ! ")
     private String street;
 
-    @NotBlank
+    @NotBlank(message = " Podaj numer domu ! ")
     private String number;
 
     private String apartment;
 
     @NotNull
-    @Pattern(regexp="[0-9]{2}\\-[0-9]{3}")
+    @Pattern(message = " Podaj kod pocztowy w formacie XX-XXX ! ", regexp="[0-9]{2}\\-[0-9]{3}")
     private String zip;
 
-    @NotBlank
+    @NotBlank(message = " Podaj miasto ! ")
     private String city;
 
     public Long getId() {
