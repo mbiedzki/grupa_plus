@@ -5,54 +5,61 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.pl.PESEL;
 import pl.coderslab.util.BCrypt;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @NotBlank(message = " Podaj imię ! ")
-        private String firstName;
+    @NotBlank(message = " Podaj imię ! ")
+    private String firstName;
 
-        @NotBlank(message = " Podaj nazwisko ! ")
-        private String lastName;
+    @NotBlank(message = " Podaj nazwisko ! ")
+    private String lastName;
 
-        @PESEL(message = " Podaj poprawny PESEL ! ")
-        private String pesel;
+    @NotNull(message = "Wybierz firmę !")
+    @OneToOne
+    private Company company;
 
-        @NotNull
-        @OneToOne(cascade = CascadeType.ALL)
-        private Address address;
+    @PESEL(message = " Podaj poprawny PESEL ! ")
+    private String pesel;
 
-        @ColumnDefault("false")
-        private boolean hasCorrAddress;
+    @NotNull
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
+    @Valid
+    private Address address;
 
-        @OneToOne(cascade = CascadeType.ALL)
-        private Address corrAddress;
+    @NotBlank(message = "Pole nie może być puste")
+    @Pattern(message = " Podaj nr telefonu w formacie +48XXXXXXXXX ! ", regexp = "^\\+48\\d{9}$")
+    private String phone;
 
-        @NotBlank
-        @Pattern(message = " Podaj nr telefonu w formacie +48XXXXXXXXX ! ", regexp="/^\\+48\\d{9}$/")
-        private String phone;
+    @NotBlank(message = "Pole nie może być puste")
+    @Email(message = " Podaj poprawny adres email ! ")
+    private String email;
 
-        @Email(message = " Podaj poprawny adres email ! ")
-        private String email;
+    private String password;
 
-        private String password;
+    @ColumnDefault("false")
+    private boolean insured;
 
-        private boolean isInsured;
+    @ColumnDefault("false")
+    private boolean beneficiary;
 
-        private boolean isBeneficiary;
+    @ColumnDefault("false")
+    private boolean hr;
 
-        private boolean isHR;
+    @ColumnDefault("false")
+    private boolean agent;
 
-        private boolean isAgent;
-
-        private boolean agreedGPRD;
+    @ColumnDefault("false")
+    private boolean agreedGPRD;
 
 
     public Long getId() {
@@ -70,6 +77,9 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public String getFullName() {
+        return lastName+" "+firstName; }
 
     public String getLastName() {
         return lastName;
@@ -95,22 +105,6 @@ public class User {
         this.address = address;
     }
 
-    public boolean isHasCorrAddress() {
-        return hasCorrAddress;
-    }
-
-    public void setHasCorrAddress(boolean hasCorrAddress) {
-        this.hasCorrAddress = hasCorrAddress;
-    }
-
-    public Address getCorrAddress() {
-        return corrAddress;
-    }
-
-    public void setCorrAddress(Address corrAddress) {
-        this.corrAddress = corrAddress;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -127,36 +121,44 @@ public class User {
         this.email = email;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public boolean isInsured() {
-        return isInsured;
+        return insured;
     }
 
     public void setInsured(boolean insured) {
-        isInsured = insured;
+        this.insured = insured;
     }
 
     public boolean isBeneficiary() {
-        return isBeneficiary;
+        return beneficiary;
     }
 
     public void setBeneficiary(boolean beneficiary) {
-        isBeneficiary = beneficiary;
+        this.beneficiary = beneficiary;
     }
 
-    public boolean isHR() {
-        return isHR;
+    public boolean isHr() {
+        return hr;
     }
 
-    public void setHR(boolean HR) {
-        isHR = HR;
+    public void setHr(boolean hr) {
+        this.hr = hr;
     }
 
     public boolean isAgent() {
-        return isAgent;
+        return agent;
     }
 
     public void setAgent(boolean agent) {
-        isAgent = agent;
+        this.agent = agent;
     }
 
     public boolean isAgreedGPRD() {
@@ -175,7 +177,11 @@ public class User {
     //password salted with BCrypt class
     public void setPassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
-        }
+    }
 
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

@@ -16,9 +16,11 @@
 <br><br>
 <hr>
 
-<h1>
+<h2>
+    <a href="company/all">Firmy</a>
+    <a href="user/all">Osoby</a>
     <a href="address/all">Adresy</a>
-</h1>
+</h2>
 <%@include file="elements/footer.jsp" %>
 </body>
 </html>
