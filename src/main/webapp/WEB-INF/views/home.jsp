@@ -17,9 +17,10 @@
 <hr>
 
 <h2>
-    <a href="company/all">Firmy</a>
-    <a href="user/all">Osoby</a>
-    <a href="address/all">Adresy</a>
+    <a href="company/all">Firmy</a><br>
+    <a href="user/all">Osoby</a><br>
+    <a href="mainCover/all">Umowy główne</a><br>
+    <a href="rider/all">Umowy dodatkowe</a><br>
 </h2>
 <%@include file="elements/footer.jsp" %>
 </body>
