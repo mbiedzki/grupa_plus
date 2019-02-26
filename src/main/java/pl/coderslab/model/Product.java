@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,12 +18,12 @@ public class Product {
     @NotBlank(message = " Podaj nazwę produktu ! ")
     private String name;
 
-    @NotNull
-    @OneToOne
+    @NotNull(message = "Wybierz umowę główną")
+    @OneToOne(fetch = FetchType.EAGER)
     private MainCover mainCover;
 
-    @OneToMany
-    private List<Rider> riders;
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private List<Rider> riders = new ArrayList<>();
 
     public Long getId() {
         return id;

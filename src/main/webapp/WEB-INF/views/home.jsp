@@ -21,6 +21,9 @@
     <a href="user/all">Osoby</a><br>
     <a href="mainCover/all">Umowy główne</a><br>
     <a href="rider/all">Umowy dodatkowe</a><br>
+    <a href="product/all">Produkty</a><br>
+    <a href="group/all">Grupy</a><br>
+    <a href="contract/all">Umowy</a><br>
 </h2>
 <%@include file="elements/footer.jsp" %>
 </body>

@@ -16,7 +16,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import pl.coderslab.converter.CompanyConverter;
+import pl.coderslab.converter.*;
+
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
 import java.util.Locale;
@@ -74,11 +75,41 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getCompanyConverter());
+        registry.addConverter(getMainCoverConverter());
+        registry.addConverter(getRiderConverter());
+        registry.addConverter(getProductConverter());
+        registry.addConverter(getUserConverter());
+        registry.addConverter(getGroupConverter());
     }
 
     @Bean
     public CompanyConverter getCompanyConverter() {
         return new CompanyConverter();
    }
+
+    @Bean
+    public MainCoverConverter getMainCoverConverter() {
+        return new MainCoverConverter();
+    }
+
+    @Bean
+    public RiderConverter getRiderConverter() {
+        return new RiderConverter();
+    }
+
+    @Bean
+    public ProductConverter getProductConverter() {
+        return new ProductConverter();
+    }
+
+    @Bean
+    public UserConverter getUserConverter() {
+        return new UserConverter();
+    }
+
+    @Bean
+    public GroupConverter getGroupConverter() {
+        return new GroupConverter();
+    }
 
 }

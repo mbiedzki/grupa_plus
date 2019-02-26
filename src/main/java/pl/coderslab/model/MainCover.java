@@ -80,4 +80,9 @@ public class MainCover {
     public void setCommission(BigDecimal commission) {
         this.commission = commission;
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + name + " - " + description;
+    }
 }

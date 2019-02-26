@@ -93,7 +93,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return street + " " + number + " " + apartment + ", " + zip + " " + city;
+        return name + ", " + city;
     }
 
 }

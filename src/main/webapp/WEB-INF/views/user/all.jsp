@@ -9,6 +9,11 @@
 <%@include file="/WEB-INF/views/elements/header.jsp" %>
 <body>
 <h1>Osoby w bazie danych</h1>
+
+<c:if test="${deleteError==true}">
+    <span style="color: red;">Nie można usunąć osoby, jest przypisana do umowy</span>
+</c:if>
+
 <table border="1">
     <thead>
     <tr>

@@ -26,6 +26,8 @@
         </form:select>
         <form:errors path="company" cssClass="error"/>
 
+        <hr>
+
         <input type="submit" value="Zapisz">
 
 

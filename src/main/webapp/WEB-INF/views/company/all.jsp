@@ -13,7 +13,7 @@
 <h1>Firmy w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <span style="color: red;">Nie można usunąć firmy, są do niej przypisane osoby</span>
+    <span style="color: red;">Nie można usunąć firmy, są do niej przypisane osoby lub grupy</span>
 </c:if>
 
 <table border="1">

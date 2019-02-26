@@ -2,7 +2,9 @@ package pl.coderslab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.coderslab.model.Contract;
 import pl.coderslab.model.User;
+import pl.coderslab.repository.ContractRepository;
 import pl.coderslab.repository.UserRepository;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ContractRepository contractRepository;
 
     public void save(User user) {
         userRepository.save(user);
@@ -27,6 +31,23 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public boolean noContractsWithInsuredId(Long id) {
+        List<Contract> contracts = contractRepository.findContractsByInsuredId(id);
+        if (!contracts.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public boolean noContractsWithBeneficiaryId(Long id) {
+        List<Contract> contracts = contractRepository.findContractsByBeneficiaryId(id);
+        if (!contracts.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

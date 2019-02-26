@@ -24,7 +24,7 @@ public class User {
     @NotBlank(message = " Podaj nazwisko ! ")
     private String lastName;
 
-    @NotNull(message = "Wybierz firmę !")
+    @NotNull(message = "Wybierz firmę lub BRAK FIRMY!")
     @OneToOne
     private Company company;
 

@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.model.Address;
 import pl.coderslab.model.Company;
+import pl.coderslab.model.Group;
 import pl.coderslab.model.User;
 import pl.coderslab.repository.CompanyRepository;
+import pl.coderslab.repository.GroupRepository;
 import pl.coderslab.repository.UserRepository;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class CompanyService {
     private CompanyRepository companyRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private GroupRepository groupRepository;
 
     public void save(Company company) {
         companyRepository.save(company);
@@ -38,6 +42,14 @@ public class CompanyService {
     public boolean noUsersInCompany(Long id) {
         List<User> users = userRepository.findUserByCompanyId(id);
         if (!users.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public boolean noGroupsWithCompanyId(Long id) {
+        List<Group> groups = groupRepository.findGroupsByCompanyId(id);
+        if (!groups.isEmpty()) {
             return false;
         } else {
             return true;

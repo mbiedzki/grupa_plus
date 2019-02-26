@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/user", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/user", produces = "text/html; charset=UTF-8")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -36,7 +36,7 @@ public class UserController {
 
     @PostMapping(path = "/add")
     public String add(@Valid User user, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "user/add";
         }
         userService.save(user);
@@ -45,7 +45,7 @@ public class UserController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.findOne(id));
         return "user/edit";
@@ -53,7 +53,7 @@ public class UserController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid User user, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "user/edit";
         }
         userService.save(user);
@@ -63,18 +63,24 @@ public class UserController {
     //delete
     //*****************************************************************************
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        userService.delete(id);
-        return "redirect:/user/all";
-
+    public String delete(@PathVariable Long id, Model model) {
+        if (userService.noContractsWithInsuredId(id) && userService.noContractsWithBeneficiaryId(id)) {
+            userService.delete(id);
+            return "redirect:/user/all";
+        } else {
+            model.addAttribute("deleteError", true);
+            model.addAttribute("users", userService.findAll());
+            return "user/all";
+        }
     }
 
-    //all
-    //*****************************************************************************
-    @RequestMapping("/all")
-    public String all(Model model) {
-        model.addAttribute("users", userService.findAll());
-        return "user/all";
-    }
 
-}
+        //all
+        //*****************************************************************************
+        @RequestMapping("/all")
+        public String all (Model model){
+            model.addAttribute("users", userService.findAll());
+            return "user/all";
+        }
+
+    }
