@@ -12,6 +12,7 @@ import pl.coderslab.model.Address;
 import pl.coderslab.service.AddressService;
 import javax.validation.Valid;
 
+/*
 @Controller
 @RequestMapping(path="/address", produces = "text/html; charset=UTF-8")
 public class AddressController {
@@ -69,3 +70,4 @@ public class AddressController {
         return "address/all";
     }
 }
+*/

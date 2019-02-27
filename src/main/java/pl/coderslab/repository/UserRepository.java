@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findUserByCompanyId(Long id);
+    List<User> findUserByAdminIsTrue();
+    List<User> findUserByHrIsTrue();
+    User findUserByPesel(String pesel);
 }

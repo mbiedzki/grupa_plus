@@ -24,7 +24,7 @@ public class User {
     @NotBlank(message = " Podaj nazwisko ! ")
     private String lastName;
 
-    @NotNull(message = "Wybierz firmę lub BRAK FIRMY!")
+    @NotNull(message = "Wybierz firmę")
     @OneToOne
     private Company company;
 
@@ -46,21 +46,8 @@ public class User {
 
     private String password;
 
-    @ColumnDefault("false")
-    private boolean insured;
-
-    @ColumnDefault("false")
-    private boolean beneficiary;
-
-    @ColumnDefault("false")
+    private boolean admin;
     private boolean hr;
-
-    @ColumnDefault("false")
-    private boolean agent;
-
-    @ColumnDefault("false")
-    private boolean agreedGPRD;
-
 
     public Long getId() {
         return id;
@@ -129,20 +116,12 @@ public class User {
         this.company = company;
     }
 
-    public boolean isInsured() {
-        return insured;
+    public boolean isAdmin() {
+        return admin;
     }
 
-    public void setInsured(boolean insured) {
-        this.insured = insured;
-    }
-
-    public boolean isBeneficiary() {
-        return beneficiary;
-    }
-
-    public void setBeneficiary(boolean beneficiary) {
-        this.beneficiary = beneficiary;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public boolean isHr() {
@@ -151,22 +130,6 @@ public class User {
 
     public void setHr(boolean hr) {
         this.hr = hr;
-    }
-
-    public boolean isAgent() {
-        return agent;
-    }
-
-    public void setAgent(boolean agent) {
-        this.agent = agent;
-    }
-
-    public boolean isAgreedGPRD() {
-        return agreedGPRD;
-    }
-
-    public void setAgreedGPRD(boolean agreedGPRD) {
-        this.agreedGPRD = agreedGPRD;
     }
 
     public String getPassword() {

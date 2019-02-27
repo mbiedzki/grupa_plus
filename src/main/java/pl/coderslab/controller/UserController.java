@@ -39,6 +39,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/add";
         }
+        user.setPassword(user.getPesel());
         userService.save(user);
         return "redirect:/user/all";
     }

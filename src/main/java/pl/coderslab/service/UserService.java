@@ -30,8 +30,19 @@ public class UserService {
     }
 
     public List<User> findAll() {
+
         return userRepository.findAll();
     }
+    public List<User> findAllAdmins() {
+        return userRepository.findUserByAdminIsTrue();
+    }
+
+    public List<User> findAllHrs() {
+        return userRepository.findUserByHrIsTrue();
+    }
+
+    public User findUserByPesel(String pesel) {return userRepository.findUserByPesel(pesel);}
+
 
     public boolean noContractsWithInsuredId(Long id) {
         List<Contract> contracts = contractRepository.findContractsByInsuredId(id);
@@ -49,5 +60,6 @@ public class UserService {
             return true;
         }
     }
+
 
 }
