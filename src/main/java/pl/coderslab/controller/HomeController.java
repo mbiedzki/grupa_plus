@@ -31,6 +31,7 @@ public class HomeController {
             return "admin/adminHome";
 
         }
+
         return "redirect:/";
     }
 }

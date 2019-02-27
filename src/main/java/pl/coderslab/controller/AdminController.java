@@ -59,7 +59,7 @@ public class AdminController {
         return "redirect:/admin/all";
     }
 
-    @GetMapping("/logout")
+    @RequestMapping("/logout")
     public String logOut(Model model) {
         model.addAttribute("loggedUserType", "loggedOut");
         return "redirect:/";
