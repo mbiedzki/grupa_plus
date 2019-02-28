@@ -4,13 +4,14 @@
 
 <html>
 <head>
-    <style><%@include file="../css/style.css"%></style>
+    <style>
+        <%@include file="../css/style.css"%>
+        <%@include file="../css/w3.css" %>
+    </style>
     <title>Produkt</title>
 </head>
 <body>
 <%@include file="../elements/header.jsp" %>
 <%@include file="/WEB-INF/views/app/product/details.jsp" %>
-<a href="/product/all">Powrót</a>
-<%@include file="../elements/footer.jsp" %>
 </body>
 </html>

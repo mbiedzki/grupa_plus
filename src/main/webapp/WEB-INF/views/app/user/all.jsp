@@ -3,7 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <style><%@include file="../css/style.css"%></style>
+    <style>
+        <%@include file="../css/style.css"%>
+        <%@include file="../css/w3.css" %>
+    </style>
     <title>Adresy</title>
 </head>
 <%@include file="../elements/header.jsp" %>
@@ -11,12 +14,14 @@
 <h1>Osoby w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <span style="color: red;">Nie można usunąć osoby, jest przypisana do umowy</span>
+    <div align="center" class="w3-xxlarge w3-panel w3-red">
+        Nie można usunąć osoby, jest przypisana do umowy
+    </div>
 </c:if>
 
-<table border="1">
+<table class="w3-table-all">
     <thead>
-    <tr>
+    <tr class="w3-blue">
         <td>Imię</td>
         <td>Nazwisko</td>
         <td>PESEL</td>
@@ -42,7 +47,7 @@
     </tbody>
 </table>
 <br>
-<a href="add">Nowa osoba</a>
-<%@include file="../elements/footer.jsp" %>
+<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa osoba</a>
+<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

@@ -13,7 +13,5 @@
 <body>
 <%@include file="../elements/header.jsp" %>
 <%@include file="../address/details.jsp" %>
-<a href="/address/all">Powrót</a>
-<%@include file="../elements/footer.jsp" %>
 </body>
 </html>

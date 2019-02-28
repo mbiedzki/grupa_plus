@@ -13,6 +13,7 @@
 <body>
 
 <h1 class="w3-container">Administratorzy</h1>
+
 <table class="w3-table-all">
     <thead>
     <tr class="w3-blue">
@@ -41,7 +42,7 @@
         <td>Imię</td>
         <td>Nazwisko</td>
         <td>PESEL</td>
-        <td>Zmiana uprawnień</td>65110605857
+        <td>Zmiana uprawnień</td>
     </tr>
     </thead>
     <tbody>

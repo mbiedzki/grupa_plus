@@ -5,6 +5,7 @@
 <head>
     <style>
         <%@include file="../css/style.css" %>
+        <%@include file="../css/w3.css" %>
     </style>
     <title>Adresy</title>
 </head>
@@ -13,12 +14,14 @@
 <h1>Firmy w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <span style="color: red;">Nie można usunąć firmy, są do niej przypisane osoby lub grupy</span>
+    <div align="center" class="w3-xxlarge w3-panel w3-red">
+        Nie można usunąć firmy, są do niej przypisane osoby lub grupy
+    </div>
 </c:if>
 
-<table border="1">
+<table class="w3-table-all">
     <thead>
-    <tr>
+    <tr class="w3-blue">
         <td>Nazwa firmy</td>
         <td>Adres</td>
         <td>Edycja</td>
@@ -38,7 +41,7 @@
     </tbody>
 </table>
 <br>
-<a href="add">Nowa firma</a>
-<%@include file="../elements/footer.jsp" %>
+<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa firma</a>
+<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

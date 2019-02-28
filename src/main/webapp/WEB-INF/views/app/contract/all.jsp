@@ -3,19 +3,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <style><%@include file="../css/style.css"%></style>
-    <title>Umowy</title>
+    <style>
+        <%@include file="../css/style.css"%>
+        <%@include file="../css/w3.css" %>
+    </style>
+    <title>Umowy ubezpieczeniowe</title>
 </head>
 <%@include file="../elements/header.jsp" %>
 <body>
-<h1>Umowy w bazie danych</h1>
-<table border="1">
+<h1>Umowy ubezpieczeniowe w bazie danych</h1>
+<table class="w3-table-all">
     <thead>
-    <tr>
+    <tr class="w3-blue">
         <td>Nr</td>
         <td>Nazwa grupy</td>
         <td>Ubezpieczony</td>
         <td>Uposażony</td>
+        <td>Zmiany</td>
+        <td>Usuwanie</td>
     </tr>
     </thead>
     <tbody>
@@ -33,7 +38,7 @@
     </tbody>
 </table>
 <br>
-<a href="add">Nowa umowa</a>
-<%@include file="../elements/footer.jsp" %>
+<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowe ubezpieczenie</a>
+<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

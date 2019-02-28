@@ -30,15 +30,15 @@
     </div>
         <hr>
         <div class="w3-large w3-panel">
-        Administrator: <form:checkbox path="admin"/><form:errors path="admin" cssClass="error"/>
-        Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/>
+        Administrator: <form:checkbox path="admin"/><form:errors path="admin" cssClass="error"/><hr>
+        Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/><hr>
         Nowe hasło:<form:password path="password"/>
     </div>
         <hr>
         <a href="/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
         <input class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" type="submit"
                onclick="return confirm
-            ('Na pewno chcesz zmienić hasło ?')" value="Zapisz"><form:errors path="admin" cssClass="error"/>
+            ('Na pewno chcesz zmienić uprawnienia ?')" value="Zapisz"><form:errors path="admin" cssClass="error"/>
         <a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 
     </form:form>

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<span>
+<div class="w3-panel">
     <h1>Edycja lub dodawanie umowy</h1>
 
     <form:form method="post" modelAttribute="mainCover">
@@ -12,8 +12,13 @@
         Suma ubezpieczenia: <form:input path="sumAssured"/><form:errors path="sumAssured" cssClass="error"/><br><br>
         Prowizja roczna <form:input path="commission"/><form:errors path="commission" cssClass="error"/><br><br>
 
-        <input type="submit" value="Zapisz">
+        <input class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" type="submit"
+               value="Zapisz">
+
+        <a href="/mainCover/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
+
+        <a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 
     </form:form>
-</span>
+</div>
 

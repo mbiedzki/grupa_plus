@@ -3,15 +3,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <style><%@include file="../css/style.css"%></style>
+    <style>
+        <%@include file="../css/style.css"%>
+        <%@include file="../css/w3.css" %>
+    </style>
     <title>Adresy</title>
 </head>
 <%@include file="../elements/header.jsp" %>
 <body>
 <h1>Adresy w bazie danych</h1>
-<table border="1">
+<table class="w3-table-all">
     <thead>
-    <tr>
+    <tr class="w3-blue">
         <td>Ulica</td>
         <td>Nr domu</td>
         <td>Nr mieszkania</td>
@@ -37,7 +40,7 @@
     </tbody>
 </table>
 <br>
-<a href="add">Nowy adres</a>
-<%@include file="../elements/footer.jsp" %>
+<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy adres</a>
+<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>
