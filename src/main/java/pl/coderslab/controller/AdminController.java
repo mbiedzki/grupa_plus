@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@SessionAttributes("loggedUserType")
+@SessionAttributes({"loggedUserType", "error"})
 @RequestMapping(path="/admin", produces = "text/html; charset=UTF-8")
 public class AdminController {
     @Autowired
@@ -62,6 +62,7 @@ public class AdminController {
     @RequestMapping("/logout")
     public String logOut(Model model) {
         model.addAttribute("loggedUserType", "loggedOut");
+        model.addAttribute("error", "3");
         return "redirect:/";
     }
 

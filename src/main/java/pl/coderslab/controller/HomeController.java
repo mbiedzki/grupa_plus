@@ -11,7 +11,7 @@ import pl.coderslab.util.BCrypt;
 
 @Controller
 @RequestMapping(path = "/", produces = "text/html; charset=UTF-8")
-@SessionAttributes("loggedUserType")
+@SessionAttributes({"loggedUserType", "error"})
 public class HomeController {
     @Autowired
     private UserService userService;
@@ -23,15 +23,20 @@ public class HomeController {
 
     @PostMapping("/")
     public String checkPass(@RequestParam String pesel, @RequestParam String password, Model model) {
+        model.addAttribute("error", "0");
 
         User userToBeChecked = userService.findUserByPesel(pesel);
+        if(userToBeChecked==null) {
+            model.addAttribute("error", "1");
+            return "redirect:/";
+        }
 
         if (BCrypt.checkpw(password, userToBeChecked.getPassword()) && userToBeChecked.isAdmin()) {
             model.addAttribute("loggedUserType", "admin");
             return "admin/adminHome";
 
         }
-
+        model.addAttribute("error", "2");
         return "redirect:/";
     }
 }

@@ -1,35 +1,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
     <style>
         <%@include file="../css/style.css" %>
+        <%@include file="../css/w3.css" %>
     </style>
 </head>
 <body>
 <%@include file="../elements/header.jsp" %>
-<div>
-    <h1>GrupaPlus - strona administratora</h1>
-</div>
-<br><br>
-<hr>
+<img src="/images/grupa.jpg" alt="Logo" style="width:100%">
 
-<h2>
-    <a href="/company/all">Firmy</a><br>
-    <a href="/user/all">Osoby</a><br>
+<div class="w3-container w3-blue">
+    <h1 align="center">Strona administratora</h1>
+</div>
+
+<br><br>
+
+<div align="center">
+    <a href="/company/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Firmy</a>
+    <a href="/user/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Osoby</a>
+    <a href="/contract/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy</a>
     <hr>
-    <a href="/mainCover/all">Umowy główne</a><br>
-    <a href="/rider/all">Umowy dodatkowe</a><br>
-    <a href="/product/all">Produkty</a><br>
-    <a href="/group/all">Grupy</a><br>
-    <a href="/contract/all">Umowy</a><br>
+    <a href="/mainCover/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy główne</a>
+    <a href="/rider/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy dodatkowe</a>
+    <a href="/product/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Produkty</a>
+    <a href="/group/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Grupy</a>
     <hr>
-    <a href="/admin/all">Zmiana uprawnień</a><br>
+    <a href="/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zmiana uprawnień</a>
+    <a href="/admin/logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+            ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
     <hr>
-    <a href="/admin/logout">Wyloguj się</a><br>
-</h2>
-<%@include file="../elements/footer.jsp" %>
+
+</div>
+
 </body>
 </html>

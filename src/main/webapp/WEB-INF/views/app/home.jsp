@@ -1,31 +1,50 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
     <style>
         <%@include file="/WEB-INF/views/app/css/style.css" %>
+        <%@include file="/WEB-INF/views/app/css/w3.css" %>
     </style>
 </head>
 <body>
 <%@include file="/WEB-INF/views/app/elements/header.jsp" %>
-<div>
-    <h1>GrupaPlus - Logowanie</h1>
+
+<img src="/images/grupa.jpg" alt="Logo" style="width:100%">
+<div class="w3-container w3-blue">
+    <h1 align="center">Logowanie</h1>
 </div>
-<br><br>
 <hr>
 
+    <c:if test="${error==1}">
+        <div align="center" class="w3-xxlarge w3-panel w3-red">
+        Brak osoby z takim nr PESEL w bazie !
+        </div>
+    </c:if>
+
+    <c:if test="${error==2}">
+        <div align="center" class="w3-xxlarge w3-panel w3-red">
+            Podałeś niepoprawne hasło !
+        </div>
+    </c:if>
+
+    <c:if test="${error==3}">
+        <div align="center" class="w3-xxlarge w3-panel w3-red">
+            Wylogowano z systemu
+        </div>
+    </c:if>
+
+
+
+<div align="center">
 <form method="post">
-
-    <input type="text" name="pesel" placeholder="podaj PESEL">
-    <input type="password" name="password" placeholder="podaj hasło">
-    <button type="submit">Zaloguj</button>
-
+    <input type="text" name="pesel" placeholder="podaj PESEL" class=w3-xlarge>
+    <input type="password" name="password" placeholder="podaj hasło" class=w3-xlarge><br><br>
+    <button type="submit" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zaloguj</button>
 </form>
-
-
-<%--<%@include file="/WEB-INF/views/app/elements/footer.jsp" %>--%>
+</div>
 </body>
 </html>
