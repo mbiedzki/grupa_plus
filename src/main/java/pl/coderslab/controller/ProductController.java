@@ -30,7 +30,7 @@ public class ProductController {
         return mainCoverService.findAll();
     }
 
-    @ModelAttribute("riders")
+    @ModelAttribute("riderList")
     public List<Rider> getRiders() {
         return riderService.findAll();
     }

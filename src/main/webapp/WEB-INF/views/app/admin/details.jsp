@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <span>
-    <h1 class="w3-blue">Edycja uprawnień</h1>
+    <h1>Edycja uprawnień</h1>
 
 <div class=w3-container>
     <form:form method="post" modelAttribute="user">
@@ -21,17 +21,17 @@
         Miasto: <form:input path="address.city"/><form:errors path="address.city" cssClass="error"/><hr>
 
         <div class="w3-select">
-        Firma: <form:select path="company">
+        Firma: <form:select path="company.id">
             <form:option value="0" label="--Wybierz firmę--"/>
             <form:options items="${companies}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="company" cssClass="error"/>
+        <form:errors path="company.id" cssClass="error"/>
     </div>
     </div>
         <hr>
         <div class="w3-large w3-panel">
-        Administrator: <form:checkbox path="admin"/><form:errors path="admin" cssClass="error"/><hr>
-        Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/><hr>
+        Administrator: <form:checkbox path="admin"/><form:errors path="admin" cssClass="error"/>
+        | Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/><hr>
         Nowe hasło:<form:password path="password"/>
     </div>
         <hr>

@@ -13,6 +13,7 @@ import pl.coderslab.service.ContractService;
 import pl.coderslab.service.GroupService;
 import pl.coderslab.service.UserService;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class ContractController {
     }
 
     @PostMapping(path = "/add")
-    public String add(@Valid Contract contract, BindingResult result) {
+    public String add(@Valid Contract contract, BindingResult result, Model model) throws IOException {
         if(result.hasErrors()) {
             return "contract/add";
         }
@@ -70,11 +71,11 @@ public class ContractController {
     }
 
     @PostMapping(path = "/edit/{id}")
-    public String save(@Valid Contract contract, BindingResult result) {
+    public String save(@Valid Contract contract, BindingResult result, Model model) throws IOException {
         if(result.hasErrors()) {
             return "contract/edit";
         }
-       contractService.save(contract);
+        contractService.save(contract);
         return "redirect:/contract/all";
     }
 

@@ -78,4 +78,12 @@ public class Contract {
     public void setClosed(LocalDateTime closed) {
         this.closed = closed;
     }
+
+    @Override
+    public String toString() {
+        return "Umowa{" +
+                "Nr umowy=" + id +
+                ", Grupa=" + contractGroup +
+                '}';
+    }
 }

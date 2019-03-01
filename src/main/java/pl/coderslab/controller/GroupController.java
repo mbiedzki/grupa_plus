@@ -57,6 +57,7 @@ public class GroupController {
     @GetMapping(path="/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("group", groupService.findOne(id));
+        System.out.println(groupService.findOne(id));
         return "group/edit";
     }
 

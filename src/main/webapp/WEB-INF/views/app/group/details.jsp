@@ -11,18 +11,18 @@
         <hr>
 
 
-        Firma: <form:select path="company">
+        Firma: <form:select path="company.id">
         <form:option value="0" label="--Wybierz firmę--"/>
         <form:options items="${companies}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="company" cssClass="error"/>
+        <form:errors path="company.id" cssClass="error"/>
         <hr>
 
-        Produkt: <form:select path="product">
+        Produkt: <form:select path="product.id">
         <form:option value="0" label="--Wybierz produkt--"/>
         <form:options items="${products}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="product" cssClass="error"/>
+        <form:errors path="product.id" cssClass="error"/>
         <hr>
 
 

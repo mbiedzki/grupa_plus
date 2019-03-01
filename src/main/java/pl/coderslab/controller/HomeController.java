@@ -11,7 +11,7 @@ import pl.coderslab.util.BCrypt;
 
 @Controller
 @RequestMapping(path = "/", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"loggedUserType", "error"})
+@SessionAttributes({"loggedUserType", "error", "insuredId"})
 public class HomeController {
     @Autowired
     private UserService userService;
@@ -36,6 +36,15 @@ public class HomeController {
             return "admin/adminHome";
 
         }
+
+        if (BCrypt.checkpw(password, userToBeChecked.getPassword())) {
+            model.addAttribute("loggedUserType", "user");
+            model.addAttribute("insuredId", userToBeChecked.getId());
+            System.out.println("zapisanie w home cont userid = " + userToBeChecked.getId().toString());
+            return "redirect:/employee/view";
+
+        }
+
         model.addAttribute("error", "2");
         return "redirect:/";
     }

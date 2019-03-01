@@ -56,4 +56,9 @@ public class Product {
     public void setRiders(List<Rider> riders) {
         this.riders = riders;
     }
+
+    /*@Override
+    public String toString() {
+        return id + " - " + name;
+    }*/
 }
