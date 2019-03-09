@@ -45,7 +45,7 @@ Email: ${user.email}
 </table>
 
 <br>
-<a href="/employee/logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+<a href="logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
             ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
 </body>
 </html>

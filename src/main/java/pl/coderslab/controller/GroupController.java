@@ -17,6 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/group", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class GroupController {
     @Autowired
     private GroupService groupService;
@@ -80,7 +81,7 @@ public class GroupController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("groups", groupService.findAll());
-            return "group/all";
+            return "redirect:/group/all";
         }
 
     }

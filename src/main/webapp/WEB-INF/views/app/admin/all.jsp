@@ -29,7 +29,7 @@
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.pesel}</td>
-            <td><a href="/admin/edit/${user.id}">Zmień uprawnienia</a></td>
+            <td><a href="${pageContext.request.contextPath}/admin/edit/${user.id}">Zmień uprawnienia</a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -51,7 +51,7 @@
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.pesel}</td>
-            <td><a href="/admin/edit/${user.id}">Zmień uprawnienia</a></td>
+            <td><a href="${pageContext.request.contextPath}/admin/edit/${user.id}">Zmień uprawnienia</a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -73,14 +73,14 @@
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.pesel}</td>
-            <td><a href="/admin/edit/${user.id}">Zmień uprawnienia</a></td>
+            <td><a href="${pageContext.request.contextPath}/admin/edit/${user.id}">Zmień uprawnienia</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
 <div align="center">
-<hr><a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<hr><a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </div>
 
 </body>

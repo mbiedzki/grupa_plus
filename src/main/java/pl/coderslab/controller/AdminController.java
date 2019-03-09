@@ -22,14 +22,14 @@ public class AdminController {
     @Autowired
     private CompanyService companyService;
 
-    @GetMapping("/adminHome")
-    public String getPass() {
-        return "/admin/adminHome";
-    }
-
     @ModelAttribute("companies")
     public List<Company> getCompany() {
         return companyService.findAll();
+    }
+
+    @GetMapping("/adminHome")
+    public String getPass() {
+        return "admin/adminHome";
     }
 
     //all

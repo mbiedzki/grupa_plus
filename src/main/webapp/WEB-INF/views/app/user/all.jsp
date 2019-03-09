@@ -14,14 +14,18 @@
 <h1>Osoby w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <div align="center" class="w3-xxlarge w3-panel w3-red">
-        Nie można usunąć osoby, jest przypisana do umowy
+    <div class="w3-panel w3-red w3-display-container">
+    <span onclick="this.parentElement.style.display='none';
+            <c:set var="deleteError" value="false" scope="session" />"
+        class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>Nie można usunąć osoby, jest przypisana do umowy !</p>
     </div>
 </c:if>
 
 <table class="w3-table-all">
     <thead>
     <tr class="w3-blue">
+        <td>Firma</td>
         <td>Imię</td>
         <td>Nazwisko</td>
         <td>PESEL</td>
@@ -34,20 +38,21 @@
     <tbody>
     <c:forEach items="${users}" var="user">
         <tr>
+            <td>${user.company.name}</td>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
             <td>${user.pesel}</td>
             <td>${user.phone}</td>
             <td>${user.email}</td>
-            <td><a href="/user/edit/${user.id}">Edytuj osobę</a></td>
-            <td><a href="/user/delete/${user.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/user/edit/${user.id}">Edytuj osobę</a></td>
+            <td><a href="${pageContext.request.contextPath}/user/delete/${user.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń osobę</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa osoba</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/user/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa osoba</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/contract", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class ContractController {
     @Autowired
     private ContractService contractService;

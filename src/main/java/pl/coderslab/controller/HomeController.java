@@ -18,7 +18,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getPass() {
-        return "/home";
+        return "home";
     }
 
     @PostMapping("/")
@@ -28,25 +28,25 @@ public class HomeController {
         User userToBeChecked = userService.findUserByPesel(pesel);
         if(userToBeChecked==null) {
             model.addAttribute("error", "1");
-            return "redirect:/";
+            return "home";
         }
 
         if (BCrypt.checkpw(password, userToBeChecked.getPassword()) && userToBeChecked.isAdmin()) {
             model.addAttribute("loggedUserType", "admin");
-            return "admin/adminHome";
+            return "redirect:/admin/adminHome";
 
         }
 
         if (BCrypt.checkpw(password, userToBeChecked.getPassword())) {
             model.addAttribute("loggedUserType", "user");
             model.addAttribute("insuredId", userToBeChecked.getId());
-            System.out.println("zapisanie w home cont userid = " + userToBeChecked.getId().toString());
+            //System.out.println("zapisanie w home cont userid = " + userToBeChecked.getId().toString());
             return "redirect:/employee/view";
 
         }
 
-        model.addAttribute("error", "2");
-        return "redirect:/";
+        model.addAttribute("error", "1");
+        return "home";
     }
 }
 

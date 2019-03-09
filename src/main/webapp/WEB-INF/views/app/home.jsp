@@ -6,35 +6,36 @@
 <head>
     <title>Home</title>
     <style>
-        <%@include file="/WEB-INF/views/app/css/style.css" %>
-        <%@include file="/WEB-INF/views/app/css/w3.css" %>
+        <%@include file="css/style.css" %>
+        <%@include file="css/w3.css" %>
     </style>
 </head>
 <body>
 <%@include file="/WEB-INF/views/app/elements/header.jsp" %>
 
-<img src="/images/grupa.jpg" alt="Logo" style="width:100%">
+<img src="images/grupa.jpg" alt="Logo" style="width:100%">
 <div class="w3-container w3-blue">
     <h1 align="center">Logowanie</h1>
 </div>
 <hr>
 
     <c:if test="${error==1}">
-        <div align="center" class="w3-xxlarge w3-panel w3-red">
-        Brak osoby z takim nr PESEL w bazie !
-        </div>
-    </c:if>
-
-    <c:if test="${error==2}">
-        <div align="center" class="w3-xxlarge w3-panel w3-red">
-            Podałeś niepoprawne hasło !
+        <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="error" value="0" scope="session" />"
+          class="w3-button w3-large w3-display-topright">&times;</span>
+            <p> Podałeś niepoprawny login lub hasło !</p>
         </div>
     </c:if>
 
     <c:if test="${error==3}">
-        <div align="center" class="w3-xxlarge w3-panel w3-red">
-            Wylogowano z systemu
+        <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="error" value="0" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+            <p> Wylogowano z systemu...</p>
         </div>
+
     </c:if>
 
 

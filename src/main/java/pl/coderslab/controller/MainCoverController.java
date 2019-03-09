@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.MainCover;
 import pl.coderslab.service.MainCoverService;
 
@@ -15,6 +12,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path="/mainCover", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class MainCoverController {
     @Autowired
     private MainCoverService mainCoverService;
@@ -63,7 +61,7 @@ public class MainCoverController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("mainCovers", mainCoverService.findAll());
-            return "mainCover/all";
+            return "redirect:/mainCover/all";
         }
     }
 

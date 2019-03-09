@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(path = "/employee", produces = "text/html; charset=UTF-8")
-@SessionAttributes("error")
+@SessionAttributes({"error", "insuredId"})
 public class EmployeeController {
     @Autowired
     private UserService userService;
@@ -22,7 +22,7 @@ public class EmployeeController {
     @GetMapping("/view")
     public String all (Model model, HttpSession session) {
         Long insuredId = (Long) session.getAttribute("insuredId");
-        System.out.println("zapisanie w empl contr" + insuredId.toString());
+        //System.out.println("zapisanie w empl contr" + insuredId.toString());
         model.addAttribute("user", userService.findOne(insuredId));
         model.addAttribute("contracts", contractService.findContractsByInsuredId(insuredId));
         return "employee/view";

@@ -6,7 +6,7 @@
 
     <groupId>pl.coderslab</groupId>
     <artifactId>grupa_plus</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <packaging>war</packaging>
 

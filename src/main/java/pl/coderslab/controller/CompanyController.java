@@ -18,6 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/company", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class CompanyController {
     @Autowired
     private CompanyService companyService;
@@ -68,7 +69,7 @@ public class CompanyController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("companies", companyService.findAll());
-            return "company/all";
+            return "redirect:/company/all";
         }
     }
 

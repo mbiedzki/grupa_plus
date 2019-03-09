@@ -17,6 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/product", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -79,7 +80,7 @@ public class ProductController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("products", productService.findAll());
-            return "product/all";
+            return "redirect:/product/all";
         }
 
     }

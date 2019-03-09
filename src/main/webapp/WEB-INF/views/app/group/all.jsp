@@ -14,8 +14,11 @@
 <h1>Grupy w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <div align="center" class="w3-xxlarge w3-panel w3-red">
-        Nie można usunąć grupy, jest przypisana do umowy
+    <div class="w3-panel w3-red w3-display-container">
+    <span onclick="this.parentElement.style.display='none';
+            <c:set var="deleteError" value="false" scope="session" />"
+          class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>Nie można usunąć grupy, jest przypisana do umowy !</p>
     </div>
 </c:if>
 
@@ -35,15 +38,15 @@
             <td>${group.name}</td>
             <td>${group.company.name}</td>
             <td>${group.product.name}</td>
-            <td><a href="/group/edit/${group.id}">Edytuj grupę</a></td>
-            <td><a href="/group/delete/${group.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/group/edit/${group.id}">Edytuj grupę</a></td>
+            <td><a href="${pageContext.request.contextPath}/group/delete/${group.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń grupę</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa grupa</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/group/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa grupa</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

@@ -15,9 +15,9 @@
         <input class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" type="submit"
                value="Zapisz">
 
-        <a href="/rider/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
+        <a href="${pageContext.request.contextPath}/rider/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
 
-        <a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+        <a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 
     </form:form>
 </div>

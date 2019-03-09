@@ -35,11 +35,11 @@
         Nowe hasło:<form:password path="password"/>
     </div>
         <hr>
-        <a href="/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
+        <a href="${pageContext.request.contextPath}/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
         <input class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" type="submit"
                onclick="return confirm
             ('Na pewno chcesz zmienić uprawnienia ?')" value="Zapisz"><form:errors path="admin" cssClass="error"/>
-        <a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+        <a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 
     </form:form>
 </div>

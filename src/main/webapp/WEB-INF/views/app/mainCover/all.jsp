@@ -14,8 +14,11 @@
 <h1>Umowy główne w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <div align="center" class="w3-xxlarge w3-panel w3-red">
-        Nie można usunąć umowy głównej, jest przypisana do produktu
+    <div class="w3-panel w3-red w3-display-container">
+    <span onclick="this.parentElement.style.display='none';
+            <c:set var="deleteError" value="false" scope="session" />"
+          class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>Nie można usunąć umowy głównej, jest przypisana do produktu !</p>
     </div>
 </c:if>
 
@@ -39,15 +42,15 @@
             <td>${mainCover.premium}</td>
             <td>${mainCover.sumAssured}</td>
             <td>${mainCover.commission}</td>
-            <td><a href="/mainCover/edit/${mainCover.id}">Edytuj umowę</a></td>
-            <td><a href="/mainCover/delete/${mainCover.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/mainCover/edit/${mainCover.id}">Edytuj umowę</a></td>
+            <td><a href="${pageContext.request.contextPath}/mainCover/delete/${mainCover.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń umowę</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa umowa główna</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/mainCover/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa umowa główna</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

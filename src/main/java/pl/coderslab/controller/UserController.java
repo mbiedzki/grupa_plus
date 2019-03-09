@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/user", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class UserController {
     @Autowired
     private UserService userService;
@@ -71,7 +72,7 @@ public class UserController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("users", userService.findAll());
-            return "user/all";
+            return "redirect:/user/all";
         }
     }
 

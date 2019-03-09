@@ -32,15 +32,15 @@
             <td>${contract.contractGroup.name}</td>
             <td>${contract.insured}</td>
             <td>${contract.beneficiary}</td>
-            <td><a href="/contract/edit/${contract.id}">Edytuj umowę</a></td>
-            <td><a href="/contract/delete/${contract.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/contract/edit/${contract.id}">Edytuj umowę</a></td>
+            <td><a href="${pageContext.request.contextPath}/contract/delete/${contract.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń umowę</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowe ubezpieczenie</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/contract/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowe ubezpieczenie</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

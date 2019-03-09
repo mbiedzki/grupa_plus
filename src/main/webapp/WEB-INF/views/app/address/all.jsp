@@ -32,15 +32,15 @@
             <td>${address.apartment}</td>
             <td>${address.zip}</td>
             <td>${address.city}</td>
-            <td><a href="/address/edit/${address.id}">Edytuj adres</a></td>
-            <td><a href="/address/delete/${address.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/address/edit/${address.id}">Edytuj adres</a></td>
+            <td><a href="${pageContext.request.contextPath}/address/delete/${address.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń adres</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy adres</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/address/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy adres</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

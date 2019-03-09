@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Rider;
 import pl.coderslab.service.RiderService;
 
@@ -15,6 +12,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path="/rider", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class RiderController {
     @Autowired
     private RiderService riderService;
@@ -63,7 +61,7 @@ public class RiderController {
         } else {
             model.addAttribute("deleteError", true);
             model.addAttribute("riders", riderService.findAll());
-            return "rider/all";
+            return "redirect:/rider/all";
         }
     }
 

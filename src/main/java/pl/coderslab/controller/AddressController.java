@@ -15,6 +15,7 @@ import javax.validation.Valid;
 /*
 @Controller
 @RequestMapping(path="/address", produces = "text/html; charset=UTF-8")
+@SessionAttributes({"deleteError"})
 public class AddressController {
     @Autowired
     private AddressService addressService;

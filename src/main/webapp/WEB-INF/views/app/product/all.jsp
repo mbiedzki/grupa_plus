@@ -14,8 +14,11 @@
 <h1>Produkty w bazie danych</h1>
 
 <c:if test="${deleteError==true}">
-    <div align="center" class="w3-xxlarge w3-panel w3-red">
-        Nie można usunąć produktu, są do niego przypisane grupy
+    <div class="w3-panel w3-red w3-display-container">
+    <span onclick="this.parentElement.style.display='none';
+            <c:set var="deleteError" value="false" scope="session" />"
+          class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>Nie można usunąć produktu, są do niego przypisane grupy !</p>
     </div>
 </c:if>
 
@@ -35,15 +38,15 @@
             <td>${product.name}</td>
             <td>${product.mainCover}</td>
             <td>${product.riders}</td>
-            <td><a href="/product/edit/${product.id}">Edytuj produkt</a></td>
-            <td><a href="/product/delete/${product.id}" onclick="return confirm
+            <td><a href="${pageContext.request.contextPath}/product/edit/${product.id}">Edytuj produkt</a></td>
+            <td><a href="${pageContext.request.contextPath}/product/delete/${product.id}" onclick="return confirm
             ('Na pewno chcesz usunąć ?')">Usuń produkt</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <br>
-<a href="add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy produkt</a>
-<a href="/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/product/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy produkt</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>
