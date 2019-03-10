@@ -6,6 +6,8 @@ import pl.coderslab.model.Contract;
 import pl.coderslab.model.User;
 import pl.coderslab.repository.ContractRepository;
 import pl.coderslab.repository.UserRepository;
+import pl.coderslab.util.BCrypt;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -46,20 +48,18 @@ public class UserService {
 
     public boolean noContractsWithInsuredId(Long id) {
         List<Contract> contracts = contractRepository.findContractsByInsuredId(id);
-        if (!contracts.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return contracts.isEmpty();
     }
     public boolean noContractsWithBeneficiaryId(Long id) {
         List<Contract> contracts = contractRepository.findContractsByBeneficiaryId(id);
-        if (!contracts.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return contracts.isEmpty();
     }
+
+    public String encryptPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    //tu dodamy funkcję sprawdzenia czy hasło = PESEL
 
 
 }

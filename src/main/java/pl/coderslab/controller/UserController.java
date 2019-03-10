@@ -10,12 +10,13 @@ import pl.coderslab.model.User;
 import pl.coderslab.service.CompanyService;
 import pl.coderslab.service.UserService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping(path = "/user", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"deleteError"})
+@SessionAttributes({"deleteError", "passwordChanged", "loggedUserType", "passwordError", "error"})
 public class UserController {
     @Autowired
     private UserService userService;
@@ -40,7 +41,10 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/add";
         }
-        user.setPassword(user.getPesel());
+        //tu dodamy weryfikację czy PESEL już istnieje
+
+        //default password for new user equals PESEL
+        user.setPassword(userService.encryptPassword(user.getPesel()));
         userService.save(user);
         return "redirect:/user/all";
     }
@@ -77,12 +81,12 @@ public class UserController {
     }
 
 
-        //all
-        //*****************************************************************************
-        @RequestMapping("/all")
-        public String all (Model model){
-            model.addAttribute("users", userService.findAll());
-            return "user/all";
-        }
-
+    //all
+    //*****************************************************************************
+    @RequestMapping("/all")
+    public String all(Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "user/all";
     }
+
+}

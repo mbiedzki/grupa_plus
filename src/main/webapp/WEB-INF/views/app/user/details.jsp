@@ -12,6 +12,7 @@
         PESEL: <form:input path="pesel"/><form:errors path="pesel" cssClass="error"/><br><br>
         Telefon: <form:input path="phone"/><form:errors path="phone" cssClass="error"/>
         Email: <form:input path="email"/><form:errors path="email" cssClass="error"/>
+        <form:hidden path="password"/>
 
         <hr>
         Adres:<br><br>

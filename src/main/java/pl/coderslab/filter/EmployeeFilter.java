@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/employee/*"})
+@WebFilter(urlPatterns = {"/employee/*", "/password/*"})
 public class EmployeeFilter implements Filter {
     public void destroy() {
     }
@@ -18,12 +18,12 @@ public class EmployeeFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpSession session = request.getSession(false);
 
-        boolean loggedIn = (session != null) && (session.getAttribute("loggedUserType").equals("user"));
+        boolean loggedIn = ((session != null) && ((session.getAttribute("loggedUserType").equals("user")
+                || (session.getAttribute("loggedUserType").equals("admin")))));
 
 
         if (loggedIn) {
             chain.doFilter(request, response);
-            System.out.println("employee filter");
         } else {
             response.sendRedirect("/home");
         }

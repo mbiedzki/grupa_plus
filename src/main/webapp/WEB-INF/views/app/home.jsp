@@ -19,33 +19,40 @@
 </div>
 <hr>
 
-    <c:if test="${error==1}">
-        <div class="w3-panel w3-red w3-display-container">
-        <span onclick="this.parentElement.style.display='none';
-            <c:set var="error" value="0" scope="session" />"
-          class="w3-button w3-large w3-display-topright">&times;</span>
-            <p> Podałeś niepoprawny login lub hasło !</p>
-        </div>
-    </c:if>
-
-    <c:if test="${error==3}">
-        <div class="w3-panel w3-red w3-display-container">
+<c:if test="${error==1}">
+    <div class="w3-panel w3-red w3-display-container">
         <span onclick="this.parentElement.style.display='none';
             <c:set var="error" value="0" scope="session" />"
               class="w3-button w3-large w3-display-topright">&times;</span>
-            <p> Wylogowano z systemu...</p>
-        </div>
+        <p> Podałeś niepoprawny login lub hasło !</p>
+    </div>
+</c:if>
 
-    </c:if>
+<c:if test="${passwordChanged==true}">
+    <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="passwordChanged" value="0" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <p> Hasło zostało zmienione...</p>
+    </div>
+</c:if>
 
+<c:if test="${error==3}">
+    <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="error" value="0" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <p> Wylogowano z systemu...</p>
+    </div>
+</c:if>
 
 
 <div align="center">
-<form method="post">
-    <input type="text" name="pesel" placeholder="podaj PESEL" class=w3-xlarge>
-    <input type="password" name="password" placeholder="podaj hasło" class=w3-xlarge><br><br>
-    <button type="submit" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zaloguj</button>
-</form>
+    <form method="post">
+        <input type="text" name="pesel" placeholder="podaj PESEL" class=w3-xlarge>
+        <input type="password" name="password" placeholder="podaj hasło" class=w3-xlarge><br><br>
+        <button type="submit" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zaloguj</button>
+    </form>
 </div>
 </body>
 </html>

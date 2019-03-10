@@ -47,7 +47,10 @@ public class User {
     private String password;
 
     private boolean admin;
+
     private boolean hr;
+
+
 
     public Long getId() {
         return id;
@@ -136,12 +139,9 @@ public class User {
         return password;
     }
 
-    //************************************************************************
-    //password salted with BCrypt class
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.password = password;
     }
-
 
     @Override
     public String toString() {

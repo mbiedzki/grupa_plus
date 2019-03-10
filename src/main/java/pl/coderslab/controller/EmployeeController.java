@@ -10,21 +10,20 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(path = "/employee", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"error", "insuredId"})
+@SessionAttributes({"error", "userId"})
 public class EmployeeController {
     @Autowired
     private UserService userService;
     @Autowired
     private ContractService contractService;
 
-    //all
+    //employee view
     //*****************************************************************************
     @GetMapping("/view")
     public String all (Model model, HttpSession session) {
-        Long insuredId = (Long) session.getAttribute("insuredId");
-        //System.out.println("zapisanie w empl contr" + insuredId.toString());
-        model.addAttribute("user", userService.findOne(insuredId));
-        model.addAttribute("contracts", contractService.findContractsByInsuredId(insuredId));
+        Long userId = (Long) session.getAttribute("userId");
+        model.addAttribute("user", userService.findOne(userId));
+        model.addAttribute("contracts", contractService.findContractsByInsuredId(userId));
         return "employee/view";
     }
 

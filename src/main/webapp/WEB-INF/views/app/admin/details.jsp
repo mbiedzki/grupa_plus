@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <span>
     <h1>Edycja uprawnień</h1>
 
@@ -13,6 +15,7 @@
         PESEL: <form:input path="pesel"/><form:errors path="pesel" cssClass="error"/>
         Telefon: <form:input path="phone"/><form:errors path="phone" cssClass="error"/>
         Email: <form:input path="email"/><form:errors path="email" cssClass="error"/><hr>
+        <form:hidden path="password" />
 
         Ulica: <form:input path="address.street"/><form:errors path="address.street" cssClass="error"/>
         Nr domu: <form:input path="address.number"/><form:errors path="address.number" cssClass="error"/>
@@ -31,8 +34,9 @@
         <hr>
         <div class="w3-large w3-panel">
         Administrator: <form:checkbox path="admin"/><form:errors path="admin" cssClass="error"/>
-        | Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/><hr>
-        Nowe hasło:<form:password path="password"/>
+        Obsługa HR: <form:checkbox path="hr"/><form:errors path="hr" cssClass="error"/><hr>
+        Nowe hasło: <input name="newPassword"> jeżeli nic nie wpiszesz, hasło pozostanie bez zmian <br><br>
+
     </div>
         <hr>
         <a href="${pageContext.request.contextPath}/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
@@ -44,4 +48,3 @@
     </form:form>
 </div>
 </span>
-

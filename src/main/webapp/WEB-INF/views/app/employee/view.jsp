@@ -30,6 +30,7 @@ Email: ${user.email}
     <tr class="w3-blue">
         <td>Nr</td>
         <td>Nazwa grupy</td>
+        <td>Nazwa produktu</td>
         <td>Uposażony</td>
     </tr>
     </thead>
@@ -38,6 +39,7 @@ Email: ${user.email}
         <tr>
             <td>${contract.id}</td>
             <td>${contract.contractGroup.name}</td>
+            <td>${contract.contractGroup.product.name}</td>
             <td>${contract.beneficiary}</td>
         </tr>
     </c:forEach>
@@ -45,7 +47,10 @@ Email: ${user.email}
 </table>
 
 <br>
-<a href="logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+<a href="${pageContext.request.contextPath}/password/change" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+            ('Na pewno chcesz zmienić hasło ?')">Zmiana hasła</a>
+
+<a href="${pageContext.request.contextPath}/employee/logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
             ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
 </body>
 </html>

@@ -51,9 +51,12 @@ public class AdminController {
     }
 
     @PostMapping(path = "/edit/{id}")
-    public String edit(@Valid User user, BindingResult result) {
+    public String edit(@Valid User user, @RequestParam String newPassword, BindingResult result) {
         if(result.hasErrors()) {
             return "admin/edit";
+        }
+        if(newPassword!="") {
+            user.setPassword(userService.encryptPassword(newPassword));
         }
         userService.save(user);
         return "redirect:/admin/all";
