@@ -14,6 +14,8 @@ Documentation (in Polish) is available in resources folder:
 
 You can login as administrator using 65110605857 as login and aaaa1111 as password. This will give you access to Admin Panel which presents the whole functionality.
 
+You can view current functionality for employee by login with: 70010109611 and password: aaaa
+
 External server address: http://54.37.232.67:8080/grupa_plus-1.0/
 
 I am now working on panel for HR rep, claim processing and doc printing in pdf.
