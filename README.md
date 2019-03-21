@@ -15,7 +15,7 @@ It is still under development as I aim to make it real prototype that could be u
 
 You can login as administrator using: 65110605857 as login and: aaaa1111 as password. This will give you access to Admin Panel which presents the whole functionality.
 
-You can view current functionality for employee by loging with: 70010109611 and password: aaaa
+You can view current functionality for employee by loging with: 70010109611 and password: aaa
 
 External server address: http://biedzki.pl/grupa_plus-1.0/
 
