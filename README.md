@@ -13,9 +13,9 @@ App for management of group insurance contracts for:
 This app has been written as my final project at CodersLab boot camp which took place in Jan-Feb, 2019.
 It is still under development as I aim to make it real prototype that could be used commercially. 
 
-You can login as administrator using: 65110605857 as login and: aaaa1111 as password. This will give you access to Admin Panel which presents the whole functionality.
+You can login as administrator using: "admin" as login and: "admin" as password. This will give you access to Admin Panel which presents the whole functionality.
 
-You can view current functionality for employee by loging with: 70010109611 and password: aaa
+You can view current functionality for employee by loging with: "user" and password: "user"
 
 External server address: http://biedzki.pl/grupa_plus-1.0/
 
