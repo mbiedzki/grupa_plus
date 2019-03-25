@@ -5,16 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.coderslab.model.Company;
 import pl.coderslab.model.User;
 import pl.coderslab.service.CompanyService;
 import pl.coderslab.service.UserService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@SessionAttributes({"loggedUserType", "error"})
+@SessionAttributes({"loggedUserType", "error", "peselError"})
 @RequestMapping(path="/admin", produces = "text/html; charset=UTF-8")
 public class AdminController {
     @Autowired
@@ -51,11 +53,18 @@ public class AdminController {
     }
 
     @PostMapping(path = "/edit/{id}")
-    public String edit(@Valid User user, @RequestParam String newPassword, BindingResult result) {
+    public String edit(@Valid User user, BindingResult result, Model model, @RequestParam String newPassword) {
         if(result.hasErrors()) {
             return "admin/edit";
         }
-        if(newPassword!="") {
+        //verify whether PESEL already exists in DB
+        model.addAttribute("peselError", false);
+        if(userService.findUserByPesel(user.getPesel())!=null) {
+            model.addAttribute("peselError", true);
+            return "admin/edit";
+        }
+
+        if(!newPassword.equals("")) {
             user.setPassword(userService.encryptPassword(newPassword));
         }
         userService.save(user);
@@ -63,9 +72,11 @@ public class AdminController {
     }
 
     @RequestMapping("/logout")
-    public String logOut(Model model) {
+    public String logOut(Model model, HttpSession session, SessionStatus status) {
         model.addAttribute("loggedUserType", "loggedOut");
         model.addAttribute("error", "3");
+        status.setComplete();
+        session.invalidate();
         return "redirect:/";
     }
 

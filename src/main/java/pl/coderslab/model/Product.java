@@ -57,8 +57,8 @@ public class Product {
         this.riders = riders;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return id + " - " + name;
-    }*/
+    }
 }

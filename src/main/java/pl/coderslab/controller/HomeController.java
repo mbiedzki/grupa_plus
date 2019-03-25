@@ -11,7 +11,7 @@ import pl.coderslab.util.BCrypt;
 
 @Controller
 @RequestMapping(path = "/", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"loggedUserType", "error", "userId"})
+@SessionAttributes({"loggedUserType", "error", "userId", "forcePasswordChange"})
 public class HomeController {
     @Autowired
     private UserService userService;
@@ -33,7 +33,6 @@ public class HomeController {
 
         if (BCrypt.checkpw(password, userToBeChecked.getPassword()) && userToBeChecked.isAdmin()) {
 
-           //jeżeli hasło=pesel (z userService) to zmiana hasła
             model.addAttribute("loggedUserType", "admin");
             model.addAttribute("userId", userToBeChecked.getId());
             return "redirect:/admin/adminHome";
@@ -42,7 +41,16 @@ public class HomeController {
 
         if (BCrypt.checkpw(password, userToBeChecked.getPassword())) {
 
-            //jeżeli hasło=pesel (z userService) to zmiana hasła
+            //if password=pesel (userService) then force password change
+
+            if((BCrypt.checkpw(pesel, userToBeChecked.getPassword())
+                    && !(pesel.equals("user")) && !(pesel.equals("admin")))) {
+                model.addAttribute("forcePasswordChange", true);
+                model.addAttribute("loggedUserType", "user");
+                model.addAttribute("userId", userToBeChecked.getId());
+                return "redirect:/password/change";
+            }
+
             model.addAttribute("loggedUserType", "user");
             model.addAttribute("userId", userToBeChecked.getId());
             return "redirect:/employee/view";
@@ -52,6 +60,7 @@ public class HomeController {
         model.addAttribute("error", "1");
         return "home";
     }
+
 }
 
 

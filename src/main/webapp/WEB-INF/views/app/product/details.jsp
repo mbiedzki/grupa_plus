@@ -9,11 +9,11 @@
         Nazwa: <form:input path="name"/><form:errors path="name" cssClass="error"/><br><br>
         <hr>
 
-        Umowa główna: <form:select path="mainCover.id">
+        Umowa główna: <form:select path="mainCover">
         <form:option value="0" label="--Wybierz umowę główną--"/>
         <form:options items="${mainCovers}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="mainCover.id" cssClass="error"/>
+        <form:errors path="mainCover" cssClass="error"/>
         <hr>
 
         Umowy dodatkowe: <form:select path="riders" multiple="true">

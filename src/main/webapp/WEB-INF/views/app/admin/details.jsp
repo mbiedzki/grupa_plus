@@ -3,6 +3,15 @@
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
+<c:if test="${peselError==true}">
+    <div class="w3-panel w3-red w3-display-container">
+    <span onclick="this.parentElement.style.display='none';"
+          class="w3-button w3-large w3-display-topright">&times;</span>
+        <p>Nie można zapisać danych osoby, taki nr PESEL już jest zapisany w bazie !</p>
+    </div>
+</c:if>
+
 <span>
     <h1>Edycja uprawnień</h1>
 
@@ -24,11 +33,11 @@
         Miasto: <form:input path="address.city"/><form:errors path="address.city" cssClass="error"/><hr>
 
         <div class="w3-select">
-        Firma: <form:select path="company.id">
+        Firma: <form:select path="company">
             <form:option value="0" label="--Wybierz firmę--"/>
             <form:options items="${companies}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="company.id" cssClass="error"/>
+        <form:errors path="company" cssClass="error"/>
     </div>
     </div>
         <hr>

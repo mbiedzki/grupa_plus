@@ -13,6 +13,14 @@
 <%@include file="../elements/header.jsp" %>
 <body>
 
+<c:if test="${forcePasswordChange==true}">
+    <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="forcePasswordChange" value="false" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <p> Hasło musi zostać zmienione !</p>
+    </div>
+</c:if>
 
 <c:if test="${passwordError==true}">
     <div class="w3-panel w3-red w3-display-container">

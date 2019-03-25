@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import pl.coderslab.service.ContractService;
 import pl.coderslab.service.UserService;
 import javax.servlet.http.HttpSession;
@@ -28,9 +29,11 @@ public class EmployeeController {
     }
 
     @RequestMapping("/logout")
-    public String logOut(Model model) {
+    public String logOut(Model model, HttpSession session, SessionStatus status) {
         model.addAttribute("loggedUserType", "loggedOut");
         model.addAttribute("error", "3");
+        status.setComplete();
+        session.invalidate();
         return "redirect:/";
     }
 }

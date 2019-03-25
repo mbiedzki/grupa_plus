@@ -7,25 +7,25 @@
     <form:form method="post" modelAttribute="contract">
 
         <div class="w3-select w3-panel w3-xlarge">
-        Ubezpieczony: <form:select path="insured.id">
+        Ubezpieczony: <form:select path="insured">
         <form:option value="0" label="--Wybierz ubezpieczonego--"/>
         <form:options items="${insureds}" itemLabel="fullName" itemValue="id"/>
         </form:select>
-        <form:errors path="insured.id" cssClass="error"/>
+        <form:errors path="insured" cssClass="error"/>
             <hr>
 
-        Uposażony: <form:select path="beneficiary.id">
+        Uposażony: <form:select path="beneficiary">
         <form:option value="0" label="--Wybierz uposażonego--"/>
         <form:options items="${beneficiaries}" itemLabel="fullName" itemValue="id"/>
         </form:select>
-        <form:errors path="beneficiary.id" cssClass="error"/>
+        <form:errors path="beneficiary" cssClass="error"/>
             <hr>
 
-        Grupa: <form:select path="contractGroup.id">
+        Grupa: <form:select path="contractGroup">
         <form:option value="0" label="--Wybierz grupę--"/>
         <form:options items="${contractGroups}" itemLabel="name" itemValue="id"/>
         </form:select>
-        <form:errors path="contractGroup.id" cssClass="error"/>
+        <form:errors path="contractGroup" cssClass="error"/>
             <hr>
         </div>
 

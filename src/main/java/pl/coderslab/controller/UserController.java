@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/user", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"deleteError", "passwordChanged", "loggedUserType", "passwordError", "error"})
+@SessionAttributes({"deleteError", "passwordChanged", "loggedUserType", "passwordError", "error", "peselError"})
 public class UserController {
     @Autowired
     private UserService userService;
@@ -37,11 +37,16 @@ public class UserController {
     }
 
     @PostMapping(path = "/add")
-    public String add(@Valid User user, BindingResult result) {
+    public String add(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user/add";
         }
-        //tu dodamy weryfikację czy PESEL już istnieje
+        //verify whether PESEL already exists in DB
+        model.addAttribute("peselError", false);
+        if(userService.findUserByPesel(user.getPesel())!=null) {
+            model.addAttribute("peselError", true);
+            return "user/add";
+        }
 
         //default password for new user equals PESEL
         user.setPassword(userService.encryptPassword(user.getPesel()));
@@ -58,9 +63,16 @@ public class UserController {
     }
 
     @PostMapping(path = "/edit/{id}")
-    public String save(@Valid User user, BindingResult result) {
+    public String save(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user/edit";
+        }
+
+        //verify whether PESEL already exists in DB
+        model.addAttribute("peselError", false);
+        if(userService.findUserByPesel(user.getPesel())!=null) {
+            model.addAttribute("peselError", true);
+            return "user/add";
         }
         userService.save(user);
         return "redirect:/user/all";
@@ -70,7 +82,9 @@ public class UserController {
     //*****************************************************************************
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
-        if (userService.noContractsWithInsuredId(id) && userService.noContractsWithBeneficiaryId(id)) {
+        if (userService.noContractsWithInsuredId(id) && userService.noContractsWithBeneficiaryId(id)
+                && !userService.findOne(id).getPesel().equals("admin")
+                && !userService.findOne(id).getPesel().equals("user")) {
             userService.delete(id);
             return "redirect:/user/all";
         } else {
