@@ -54,7 +54,10 @@
 
 <hr>
 <div align="center">
-<a href="${pageContext.request.contextPath}/employee/logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+    <a href="${pageContext.request.contextPath}/employee/view"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Powrót</a>
+    <a href="${pageContext.request.contextPath}/employee/logout"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
             ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
 </div>
 </body>
