@@ -57,12 +57,6 @@ public class AdminController {
         if(result.hasErrors()) {
             return "admin/edit";
         }
-        //verify whether PESEL already exists in DB
-        model.addAttribute("peselError", false);
-        if(userService.findUserByPesel(user.getPesel())!=null) {
-            model.addAttribute("peselError", true);
-            return "admin/edit";
-        }
 
         if(!newPassword.equals("")) {
             user.setPassword(userService.encryptPassword(newPassword));

@@ -67,13 +67,6 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/edit";
         }
-
-        //verify whether PESEL already exists in DB
-        model.addAttribute("peselError", false);
-        if(userService.findUserByPesel(user.getPesel())!=null) {
-            model.addAttribute("peselError", true);
-            return "user/add";
-        }
         userService.save(user);
         return "redirect:/user/all";
     }
