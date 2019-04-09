@@ -10,6 +10,8 @@ import pl.coderslab.model.User;
 import pl.coderslab.service.ContractService;
 import pl.coderslab.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -38,11 +40,9 @@ public class PdfCreator {
         }
     };
 
-    public static void pdfCreate(String inputBody) throws IOException, DocumentException {
-        String body = "<html>" +
-                "<body>" + inputBody + "</body>" +
-                "</html>";
-        OutputStream file = new FileOutputStream(new File("/usr/local/bin/output.pdf"));
+    public static void pdfCreate(String body) throws IOException, DocumentException {
+
+        OutputStream file = new FileOutputStream(new File("/usr/local/bin/grupaplus/output.pdf"));
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, file);
         document.open();
@@ -53,4 +53,44 @@ public class PdfCreator {
 
     }
 
+    public static void downloadPDF(HttpServletRequest request, HttpServletResponse response, String fileName)
+            throws IOException {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+        try {
+            File file = new File("/usr/local/bin/grupaplus/output.pdf");
+            FileInputStream fileInputStream = new FileInputStream(file);
+            DataOutputStream outputStream = new DataOutputStream(response.getOutputStream());
+            response.setHeader("Content-Length", String.valueOf(file.length()));
+            byte[] buffer = new byte[1024];
+            int length = 0;
+            while ((length = fileInputStream.read(buffer)) >= 0) {
+                outputStream.write(buffer, 0, length);
+            }  return;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return;
+    }
+
+    public static void displayPDF(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition", "inline");
+        try {
+            File file = new File("/usr/local/bin/grupaplus/output.pdf");
+            FileInputStream fileInputStream = new FileInputStream(file);
+            DataOutputStream outputStream = new DataOutputStream(response.getOutputStream());
+            response.setHeader("Content-Length", String.valueOf(file.length()));
+            byte[] buffer = new byte[1024];
+            int length = 0;
+            while ((length = fileInputStream.read(buffer)) >= 0) {
+                outputStream.write(buffer, 0, length);
+            }  return;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return;
+    }
 }

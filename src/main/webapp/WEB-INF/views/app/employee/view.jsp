@@ -44,9 +44,10 @@
     </c:forEach>
     </tbody>
 </table>
+<hr>
 
 <c:if test="${emailSent==true}">
-    <div class="w3-panel w3-red w3-display-container">
+    <div class="w3-panel w3-light-gray w3-display-container">
         <span onclick="this.parentElement.style.display='none';
             <c:set var="emailSent" value="0" scope="session" />"
               class="w3-button w3-large w3-display-topright">&times;</span>
@@ -54,15 +55,21 @@
     </div>
 </c:if>
 
-
-<br>
 <div class="w3-container">
-<form method="post"><br>
+<form method="post">
+
+<div class="w3-container w3-large">
+    <p><input type="radio" name="summary" value="send" checked>Na adres email
+        <input class="w3-round-large"  type="email" name="emailToSend" value="${user.email}"></p>
+    <p><input type="radio" name="summary" value="download" >Zapisz na dysku</p>
+    <p><input type="radio" name="summary" value="display" >Wyświetl w przeglądarce</p>
+</div>
+
+
+
+<hr>
     <input class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" type="submit"
-           value="Wyślij podsumowanie na adres: ">
-    <input class="w3-xlarge w3-round-large"  type="email" name="emailToSend" value="${user.email}">
-    <br>
-</form>
+           value="Wyślij">
 <a href="${pageContext.request.contextPath}/password/change"
    class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
 ('Na pewno chcesz zmienić hasło ?')">Zmiana hasła</a>
@@ -70,6 +77,8 @@
 <a href="${pageContext.request.contextPath}/employee/logout"
    class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
             ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
+
+</form>
 </div>
 
 </body>

@@ -76,7 +76,9 @@ public class UserService {
         List<Contract> contracts = contractService.findContractsByInsuredId(userId);
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("<h1>Twoje umowy:</h1>");
+        stringBuilder.append("<html><body>");
+        stringBuilder.append("<img src='/usr/local/bin/grupaplus/logosmall.jpg'></img>");
+        stringBuilder.append("<p>Podsumowanie umów ubezpieczenia:</p><hr></hr>");
         stringBuilder.append("<p>Ubezpieczony: " + userToSend.getFullName() + "</p>");
         stringBuilder.append("<p>PESEL: " + userToSend.getPesel() + "</p>");
         stringBuilder.append("<p>Telefon: " + userToSend.getPhone() + "</p>");
@@ -102,6 +104,7 @@ public class UserService {
                             + "</p>");
         }
 
+        stringBuilder.append("</body></html>");
         PdfCreator.pdfCreate(stringBuilder.toString());
 
     }

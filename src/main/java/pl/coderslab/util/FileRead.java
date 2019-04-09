@@ -10,7 +10,7 @@ public class FileRead {
 
         //in this file on server the data for email to be sent from is stored
 
-        File file = new File("/usr/local/bin/data.txt");
+        File file = new File("/usr/local/bin/grupaplus/data.txt");
         String[] data = new String[2];
 
         //scanner object reading file
@@ -24,5 +24,6 @@ public class FileRead {
         }
         return data;
     }
+
 
 }

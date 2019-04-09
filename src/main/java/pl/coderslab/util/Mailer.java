@@ -2,6 +2,9 @@ package pl.coderslab.util;
 
 
 import com.itextpdf.text.DocumentException;
+import org.springframework.beans.factory.annotation.Autowired;
+import pl.coderslab.model.User;
+import pl.coderslab.service.UserService;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -15,7 +18,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Mailer {
-    public static void send(String recipientAddress, String subject, String message) throws IOException, DocumentException {
+
+    public static void send(String recipientAddress, String userName, String subject, String message) throws IOException, DocumentException {
+
         //Get properties object
         Properties props = new Properties();
         props.put("mail.smtp.auth", true);
@@ -51,9 +56,9 @@ public class Mailer {
             textBodyPart.setText(message);
 
             MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource("/usr/local/bin/output.pdf");
+            DataSource source = new FileDataSource("/usr/local/bin/grupaplus/output.pdf");
             attachmentBodyPart.setDataHandler(new DataHandler(source));
-            attachmentBodyPart.setFileName("/usr/local/bin/output.pdf");
+            attachmentBodyPart.setFileName(userName + ".pdf");
 
             multipart.addBodyPart(textBodyPart);  // add the text part
             multipart.addBodyPart(attachmentBodyPart); // add the attachement part*/

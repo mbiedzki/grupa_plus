@@ -13,9 +13,15 @@ import pl.coderslab.service.UserService;
 import pl.coderslab.util.Mailer;
 import pl.coderslab.util.PdfCreator;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import static java.awt.Desktop.isDesktopSupported;
 
 @Controller
 @RequestMapping(path = "/employee", produces = "text/html; charset=UTF-8")
@@ -37,14 +43,29 @@ public class EmployeeController {
     }
 
     @PostMapping("/view")
-    public String send(@RequestParam String emailToSend, Model model, HttpSession session)
+    public String send(@RequestParam String emailToSend, @RequestParam String summary, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response)
             throws IOException, DocumentException {
         Long userId = (Long) session.getAttribute("userId");
+        String userName = userService.findOne(userId).getFullName();
         userService.buildPdf(userId);
-        Mailer.send(emailToSend, "Grupa Plus - Twoje umowy.",
-                "GRUPA PLUS, poniżej załączamy Twoje umowy\nPozdrawiamy.\n\n");
-        model.addAttribute("emailSent", true);
+
+
+        if(summary.equals("send")) {
+            Mailer.send(emailToSend, userName, "Grupa Plus - Twoje umowy.",
+                    "GRUPA PLUS, poniżej załączamy Twoje umowy\nPozdrawiamy.\n\n");
+            model.addAttribute("emailSent", true);
+            return "redirect:/employee/view";
+
+        } else if(summary.equals("download")) {
+            model.addAttribute("emailSent", false);
+            PdfCreator.downloadPDF(request, response, userName);
+            return "redirect:/employee/view";
+        }
+
+        model.addAttribute("emailSent", false);
+        PdfCreator.displayPDF(request, response);
         return "redirect:/employee/view";
+
     }
 
 
