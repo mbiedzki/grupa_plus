@@ -77,8 +77,9 @@ public class UserService {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<html><body>");
-        stringBuilder.append("<img src='/usr/local/bin/grupaplus/logosmall.jpg'></img>");
-        stringBuilder.append("<p>Podsumowanie umów ubezpieczenia:</p><hr></hr>");
+        stringBuilder.append("<img src='/usr/local/bin/grupaplus/grupa.jpg'></img>");
+        stringBuilder.append("<h1>GrupaPlus</h1>");
+        stringBuilder.append("<p>Podsumowanie umów ubezpieczenia</p><hr></hr>");
         stringBuilder.append("<p>Ubezpieczony: " + userToSend.getFullName() + "</p>");
         stringBuilder.append("<p>PESEL: " + userToSend.getPesel() + "</p>");
         stringBuilder.append("<p>Telefon: " + userToSend.getPhone() + "</p>");

@@ -56,7 +56,7 @@ public class PdfCreator {
     public static void downloadPDF(HttpServletRequest request, HttpServletResponse response, String fileName)
             throws IOException {
         response.setContentType("application/pdf");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName +".pdf");
         try {
             File file = new File("/usr/local/bin/grupaplus/output.pdf");
             FileInputStream fileInputStream = new FileInputStream(file);
