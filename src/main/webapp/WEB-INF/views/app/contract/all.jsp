@@ -11,6 +11,7 @@
 </head>
 <%@include file="../elements/header.jsp" %>
 <body>
+<div class="w3-panel">
 <h1>Umowy ubezpieczeniowe w bazie danych</h1>
 
 
@@ -42,5 +43,6 @@
 <br>
 <a href="${pageContext.request.contextPath}/contract/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowe ubezpieczenie</a>
 <a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+</div>
 </body>
 </html>

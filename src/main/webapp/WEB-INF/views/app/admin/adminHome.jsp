@@ -22,7 +22,7 @@
 <div align="center">
     <a href="${pageContext.request.contextPath}/company/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Firmy</a>
     <a href="${pageContext.request.contextPath}/user/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Osoby</a>
-    <a href="${pageContext.request.contextPath}/contract/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy</a>
+    <a href="${pageContext.request.contextPath}/contract/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Ubezpieczenia</a>
     <hr>
     <a href="${pageContext.request.contextPath}/mainCover/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy główne</a>
     <a href="${pageContext.request.contextPath}/rider/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy dodatkowe</a>

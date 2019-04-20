@@ -11,7 +11,9 @@
 </head>
 <%@include file="../elements/header.jsp" %>
 <body>
+<div class="w3-panel">
 <h1>Firmy w bazie danych</h1>
+
 
 <c:if test="${deleteError==true}">
     <div class="w3-panel w3-red w3-display-container">
@@ -46,5 +48,6 @@
 <br>
 <a href="${pageContext.request.contextPath}/company/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowa firma</a>
 <a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+</div>
 </body>
 </html>

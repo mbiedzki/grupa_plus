@@ -11,7 +11,7 @@
 </head>
 <%@include file="../elements/header.jsp" %>
 <body>
-
+<div class="w3-panel">
 <h1 class="w3-container">Administratorzy</h1>
 
 <table class="w3-table-all">
@@ -82,6 +82,6 @@
 <div align="center">
 <hr><a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </div>
-
+</div>
 </body>
 </html>

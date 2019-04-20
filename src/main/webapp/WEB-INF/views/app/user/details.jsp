@@ -17,25 +17,44 @@
 
     <form:form method="post" modelAttribute="user">
 
-        Imię: <form:input path="firstName"/><form:errors path="firstName" cssClass="error"/>
-        Nazwisko: <form:input path="lastName"/><form:errors path="lastName" cssClass="error"/>
-        PESEL: <form:input path="pesel"/><form:errors path="pesel" cssClass="error"/><br><br>
-        Telefon: <form:input path="phone"/><form:errors path="phone" cssClass="error"/>
-        Email: <form:input path="email"/><form:errors path="email" cssClass="error"/>
-        <form:hidden path="password"/>
+        <div class="row">
 
-        <hr>
-        Adres:<br><br>
-        Ulica: <form:input path="address.street"/><form:errors path="address.street" cssClass="error"/>
-        Nr domu: <form:input path="address.number"/><form:errors path="address.number" cssClass="error"/>
-        Nr mieszkania: <form:input path="address.apartment"/><form:errors path="address.apartment"
-                                                                          cssClass="error"/><br><br>
-        Kod: <form:input path="address.zip"/><form:errors path="address.zip" cssClass="error"/>
-        Miasto: <form:input path="address.city"/><form:errors path="address.city" cssClass="error"/>
-        <hr>
+            <div class="column">
+                <span style='width: 20%; display: inline-block'>Imię: </span><form:input path="firstName"/><form:errors
+                    path="firstName" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Nazwisko: </span><form:input
+                    path="lastName"/><form:errors
+                    path="lastName" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>PESEL: </span><form:input path="pesel"/><form:errors
+                    path="pesel" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Telefon: </span><form:input path="phone"/><form:errors
+                    path="phone" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Email: </span><form:input path="email"/><form:errors
+                    path="email" cssClass="error"/>
+                <form:hidden path="password"/>
+            </div>
 
 
-        Firma: <form:select path="company">
+            <div class="column">
+                <span style='width: 20%; display: inline-block'>Ulica: </span><form:input
+                    path="address.street"/><form:errors
+                    path="address.street" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Nr domu: </span><form:input
+                    path="address.number"/><form:errors
+                    path="address.number" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Nr mieszkania: </span><form:input
+                    path="address.apartment"/><form:errors path="address.apartment"
+                                                           cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Kod: </span><form:input path="address.zip"/><form:errors
+                    path="address.zip" cssClass="error"/><br><br>
+                <span style='width: 20%; display: inline-block'>Miasto: </span><form:input
+                    path="address.city"/><form:errors
+                    path="address.city" cssClass="error"/>
+            </div>
+        </div>
+
+<hr/>
+        <span style='width: 10%; display: inline-block'>Firma:</span><form:select cssStyle="width: 30%" path="company">
         <form:option value="0" label="--Wybierz firmę--"/>
         <form:options items="${companies}" itemLabel="name" itemValue="id"/>
     </form:select>
