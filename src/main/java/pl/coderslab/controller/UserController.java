@@ -43,7 +43,7 @@ public class UserController {
         }
         //verify whether PESEL already exists in DB
         model.addAttribute("peselError", false);
-        if(userService.findUserByPesel(user.getPesel())!=null) {
+        if (userService.findUserByPesel(user.getPesel()) != null) {
             model.addAttribute("peselError", true);
             return "user/add";
         }

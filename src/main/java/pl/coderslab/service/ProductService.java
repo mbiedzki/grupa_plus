@@ -30,14 +30,12 @@ public class ProductService {
         return productRepository.findOne(id);
     }
 
-    public List<Product> findAll() { return productRepository.findAll(); }
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
 
     public boolean noGroupsWithProductId(Long id) {
         List<Group> groups = groupRepository.findGroupsByProductId(id);
-        if (!groups.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return groups.isEmpty();
     }
 }

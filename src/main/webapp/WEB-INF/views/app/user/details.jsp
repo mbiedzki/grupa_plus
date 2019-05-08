@@ -53,7 +53,7 @@
             </div>
         </div>
 
-<hr/>
+        <hr/>
         <span style='width: 10%; display: inline-block'>Firma:</span><form:select cssStyle="width: 30%" path="company">
         <form:option value="0" label="--Wybierz firmę--"/>
         <form:options items="${companies}" itemLabel="name" itemValue="id"/>

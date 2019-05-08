@@ -68,7 +68,9 @@ public class Mailer {
 
             System.out.println("message sent successfully");
 
-        } catch (MessagingException e) {throw new RuntimeException(e);}
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

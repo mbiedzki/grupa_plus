@@ -1,13 +1,14 @@
 package pl.coderslab.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name="contracts")
+@Table(name = "contracts")
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +26,10 @@ public class Contract {
     @OneToOne
     private Group contractGroup;
 
-    @Column(name="created")
+    @Column(name = "created")
     private LocalDateTime created;
 
-    @Column(name="closed")
+    @Column(name = "closed")
     private LocalDateTime closed;
 
     public Long getId() {

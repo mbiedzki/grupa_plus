@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 @SessionAttributes({"loggedUserType", "error", "peselError"})
-@RequestMapping(path="/admin", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/admin", produces = "text/html; charset=UTF-8")
 public class AdminController {
     @Autowired
     private UserService userService;
@@ -54,11 +54,11 @@ public class AdminController {
 
     @PostMapping(path = "/edit/{id}")
     public String edit(@Valid User user, BindingResult result, Model model, @RequestParam String newPassword) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "admin/edit";
         }
 
-        if(!newPassword.equals("")) {
+        if (!newPassword.equals("")) {
             user.setPassword(userService.encryptPassword(newPassword));
         }
         userService.save(user);

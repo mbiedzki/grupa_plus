@@ -30,14 +30,12 @@ public class GroupService {
         return groupRepository.findOne(id);
     }
 
-    public List<Group> findAll() { return groupRepository.findAll(); }
+    public List<Group> findAll() {
+        return groupRepository.findAll();
+    }
 
     public boolean noContractsWithContractGroupId(Long id) {
         List<Contract> contracts = contractRepository.findContractsByContractGroupId(id);
-        if (!contracts.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return contracts.isEmpty();
     }
 }

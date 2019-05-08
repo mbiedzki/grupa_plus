@@ -27,7 +27,9 @@ public class ContractService {
         return contractRepository.findOne(id);
     }
 
-    public List<Contract> findAll() { return contractRepository.findAll(); }
+    public List<Contract> findAll() {
+        return contractRepository.findAll();
+    }
 
     public List<Contract> findContractsByInsuredId(Long id) {
         return contractRepository.findContractsByInsuredId(id);

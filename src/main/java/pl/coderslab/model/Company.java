@@ -11,7 +11,7 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
-@Table(name="companies")
+@Table(name = "companies")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Company {
     private String apartment;
 
     @NotNull
-    @Pattern(message = " Podaj kod pocztowy w formacie XX-XXX ! ", regexp="[0-9]{2}\\-[0-9]{3}")
+    @Pattern(message = " Podaj kod pocztowy w formacie XX-XXX ! ", regexp = "[0-9]{2}\\-[0-9]{3}")
     private String zip;
 
     @NotBlank(message = " Podaj miasto ! ")

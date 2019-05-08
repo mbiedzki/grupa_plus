@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/product", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/product", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class ProductController {
     @Autowired
@@ -46,7 +46,7 @@ public class ProductController {
 
     @PostMapping(path = "/add")
     public String add(@Valid Product product, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "product/add";
         }
         productService.save(product);
@@ -55,7 +55,7 @@ public class ProductController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("product", productService.findOne(id));
         return "product/edit";
@@ -63,7 +63,7 @@ public class ProductController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid Product product, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "product/edit";
         }
         productService.save(product);
@@ -74,7 +74,7 @@ public class ProductController {
     //*****************************************************************************
     @RequestMapping("/delete/{id}")
     public String delete(Model model, @PathVariable Long id) {
-        if(productService.noGroupsWithProductId(id)) {
+        if (productService.noGroupsWithProductId(id)) {
             productService.delete(id);
             return "redirect:/product/all";
         } else {

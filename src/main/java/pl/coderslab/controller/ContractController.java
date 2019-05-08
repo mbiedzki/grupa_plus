@@ -12,13 +12,14 @@ import pl.coderslab.model.User;
 import pl.coderslab.service.ContractService;
 import pl.coderslab.service.GroupService;
 import pl.coderslab.service.UserService;
+
 import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/contract", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/contract", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class ContractController {
     @Autowired
@@ -54,7 +55,7 @@ public class ContractController {
 
     @PostMapping(path = "/add")
     public String add(@Valid Contract contract, BindingResult result, Model model) throws IOException {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "contract/add";
         }
         LocalDateTime date = LocalDateTime.now();
@@ -65,7 +66,7 @@ public class ContractController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("contract", contractService.findOne(id));
         return "contract/edit";
@@ -73,7 +74,7 @@ public class ContractController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid Contract contract, BindingResult result, Model model) throws IOException {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "contract/edit";
         }
         contractService.save(contract);

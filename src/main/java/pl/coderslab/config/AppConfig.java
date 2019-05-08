@@ -36,7 +36,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                 new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/views/app/");
         viewResolver.setSuffix(".jsp");
-        return viewResolver; }
+        return viewResolver;
+    }
 
     //servlety
     @Override
@@ -50,20 +51,23 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public LocalEntityManagerFactoryBean entityManagerFactory() {
         LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
         emfb.setPersistenceUnitName("grupaPlusPersistenceUnit");
-        return emfb; }
+        return emfb;
+    }
 
     //transaction manager
     @Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager tm = new JpaTransactionManager(emf);
-        return tm; }
+        return tm;
+    }
 
     //lokalizacja
-    @Bean(name="localeResolver")
+    @Bean(name = "localeResolver")
     public LocaleContextResolver getLocaleContextResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-        localeResolver.setDefaultLocale(new Locale("pl","PL"));
-        return localeResolver; }
+        localeResolver.setDefaultLocale(new Locale("pl", "PL"));
+        return localeResolver;
+    }
 
     //walidacja
     @Bean
@@ -85,7 +89,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public CompanyConverter getCompanyConverter() {
         return new CompanyConverter();
-   }
+    }
 
     @Bean
     public MainCoverConverter getMainCoverConverter() {

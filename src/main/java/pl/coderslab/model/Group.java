@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="groups_ins")
+@Table(name = "groups_ins")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

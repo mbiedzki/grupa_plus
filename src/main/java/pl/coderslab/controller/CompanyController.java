@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/company", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/company", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class CompanyController {
     @Autowired
@@ -33,7 +33,7 @@ public class CompanyController {
 
     @PostMapping(path = "/add")
     public String add(@Valid Company company, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "company/add";
         }
         companyService.save(company);
@@ -44,19 +44,18 @@ public class CompanyController {
     //*****************************************************************************
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
-            model.addAttribute("company", companyService.findOne(id));
+        model.addAttribute("company", companyService.findOne(id));
         return "company/edit";
     }
 
     @PostMapping(path = "/edit/{id}")
     public String edit(@Valid Company company, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "company/edit";
         }
         companyService.save(company);
         return "redirect:/company/all";
     }
-
 
 
     //delete
@@ -81,7 +80,6 @@ public class CompanyController {
         model.addAttribute("companies", companyService.findAll());
         return "company/all";
     }
-
 
 
 }

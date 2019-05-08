@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/group", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/group", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class GroupController {
     @Autowired
@@ -46,7 +46,7 @@ public class GroupController {
 
     @PostMapping(path = "/add")
     public String add(@Valid Group group, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "group/add";
         }
         groupService.save(group);
@@ -55,7 +55,7 @@ public class GroupController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("group", groupService.findOne(id));
         System.out.println(groupService.findOne(id));
@@ -64,7 +64,7 @@ public class GroupController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid Group group, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "group/edit";
         }
         groupService.save(group);
@@ -75,7 +75,7 @@ public class GroupController {
     //*****************************************************************************
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
-        if(groupService.noContractsWithContractGroupId(id)) {
+        if (groupService.noContractsWithContractGroupId(id)) {
             groupService.delete(id);
             return "redirect:/group/all";
         } else {

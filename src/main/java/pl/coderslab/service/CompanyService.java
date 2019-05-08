@@ -41,18 +41,11 @@ public class CompanyService {
 
     public boolean noUsersInCompany(Long id) {
         List<User> users = userRepository.findUserByCompanyId(id);
-        if (!users.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return users.isEmpty();
     }
+
     public boolean noGroupsWithCompanyId(Long id) {
         List<Group> groups = groupRepository.findGroupsByCompanyId(id);
-        if (!groups.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return groups.isEmpty();
     }
 }

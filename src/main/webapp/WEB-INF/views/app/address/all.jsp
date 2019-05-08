@@ -40,7 +40,9 @@
     </tbody>
 </table>
 <br>
-<a href="${pageContext.request.contextPath}/address/add" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy adres</a>
-<a href="${pageContext.request.contextPath}/admin/adminHome" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
+<a href="${pageContext.request.contextPath}/address/add"
+   class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Nowy adres</a>
+<a href="${pageContext.request.contextPath}/admin/adminHome"
+   class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Panel administratora</a>
 </body>
 </html>

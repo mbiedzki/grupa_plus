@@ -94,7 +94,7 @@ public class UserService {
                             + "Zakład pracy: " + contract.getContractGroup().getCompany().getName()
                             + "</p>"
                             + "<p>"
-                            + "Uposażony: " + contract.getBeneficiary()+ ",  "
+                            + "Uposażony: " + contract.getBeneficiary() + ",  "
                             + "Produkt: " + contract.getContractGroup().getProduct().getName()
                             + "</p>"
                             + "<p>"

@@ -35,11 +35,11 @@
 <div class="w3-panel w3-large">
     <h1>Zostanie zmienione hasło dla użytkownika : </h1>
 
-            ${user.firstName}
-            ${user.lastName}<br/>
-            PESEL : ${user.pesel}<br/>
-            Telefon : ${user.phone}<br/>
-            Email: ${user.email}
+    ${user.firstName}
+    ${user.lastName}<br/>
+    PESEL : ${user.pesel}<br/>
+    Telefon : ${user.phone}<br/>
+    Email: ${user.email}
 
 </div>
 <hr>

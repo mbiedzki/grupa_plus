@@ -35,7 +35,7 @@ public class EmployeeController {
     //employee view
     //*****************************************************************************
     @GetMapping("/view")
-    public String all (Model model, HttpSession session) {
+    public String all(Model model, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         model.addAttribute("user", userService.findOne(userId));
         model.addAttribute("contracts", contractService.findContractsByInsuredId(userId));
@@ -50,13 +50,13 @@ public class EmployeeController {
         userService.buildPdf(userId);
 
 
-        if(summary.equals("send")) {
+        if (summary.equals("send")) {
             Mailer.send(emailToSend, userName, "Grupa Plus - Twoje umowy.",
                     "GRUPA PLUS, poniżej załączamy Twoje umowy\nPozdrawiamy.\n\n");
             model.addAttribute("emailSent", true);
             return "redirect:/employee/view";
 
-        } else if(summary.equals("download")) {
+        } else if (summary.equals("download")) {
             model.addAttribute("emailSent", false);
             PdfCreator.downloadPDF(request, response, userName);
             return "redirect:/employee/view";

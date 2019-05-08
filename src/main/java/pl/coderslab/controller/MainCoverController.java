@@ -11,7 +11,7 @@ import pl.coderslab.service.MainCoverService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(path="/mainCover", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/mainCover", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class MainCoverController {
     @Autowired
@@ -27,7 +27,7 @@ public class MainCoverController {
 
     @PostMapping(path = "/add")
     public String add(@Valid MainCover mainCover, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "mainCover/add";
         }
         mainCoverService.save(mainCover);
@@ -36,7 +36,7 @@ public class MainCoverController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("mainCover", mainCoverService.findOne(id));
         return "mainCover/edit";
@@ -44,7 +44,7 @@ public class MainCoverController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid MainCover mainCover, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "mainCover/edit";
         }
         mainCoverService.save(mainCover);

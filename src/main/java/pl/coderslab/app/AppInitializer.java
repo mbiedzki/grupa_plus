@@ -26,7 +26,7 @@ public class AppInitializer implements WebApplicationInitializer {
         servlet.addMapping("/");
 
         //encoding
-        FilterRegistration.Dynamic fr = container.addFilter("encodingFilter",new CharacterEncodingFilter());
+        FilterRegistration.Dynamic fr = container.addFilter("encodingFilter", new CharacterEncodingFilter());
         fr.setInitParameter("encoding", "UTF-8");
         fr.setInitParameter("forceEncoding", "true");
         fr.addMappingForUrlPatterns(null, true, "/*");

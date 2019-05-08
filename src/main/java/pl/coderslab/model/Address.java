@@ -1,12 +1,13 @@
 package pl.coderslab.model;
 
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name="addresses")
+@Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Address {
     private String apartment;
 
     @NotNull
-    @Pattern(message = " Podaj kod pocztowy w formacie XX-XXX ! ", regexp="[0-9]{2}\\-[0-9]{3}")
+    @Pattern(message = " Podaj kod pocztowy w formacie XX-XXX ! ", regexp = "[0-9]{2}\\-[0-9]{3}")
     private String zip;
 
     @NotBlank(message = " Podaj miasto ! ")
@@ -71,7 +72,9 @@ public class Address {
         return city;
     }
 
-    public void setCity(String city) { this.city = city; }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
 
     @Override

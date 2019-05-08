@@ -26,7 +26,7 @@ public class HomeController {
         model.addAttribute("error", "0");
 
         User userToBeChecked = userService.findUserByPesel(pesel);
-        if(userToBeChecked==null) {
+        if (userToBeChecked == null) {
             model.addAttribute("error", "1");
             return "home";
         }
@@ -43,7 +43,7 @@ public class HomeController {
 
             //if password=pesel (userService) then force password change
 
-            if((BCrypt.checkpw(pesel, userToBeChecked.getPassword())
+            if ((BCrypt.checkpw(pesel, userToBeChecked.getPassword())
                     && !(pesel.equals("user")) && !(pesel.equals("admin")))) {
                 model.addAttribute("forcePasswordChange", true);
                 model.addAttribute("loggedUserType", "user");

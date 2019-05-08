@@ -20,17 +20,26 @@
 <br><br>
 
 <div align="center">
-    <a href="${pageContext.request.contextPath}/company/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Firmy</a>
-    <a href="${pageContext.request.contextPath}/user/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Osoby</a>
-    <a href="${pageContext.request.contextPath}/contract/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Ubezpieczenia</a>
+    <a href="${pageContext.request.contextPath}/company/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Firmy</a>
+    <a href="${pageContext.request.contextPath}/user/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Osoby</a>
+    <a href="${pageContext.request.contextPath}/contract/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Ubezpieczenia</a>
     <hr>
-    <a href="${pageContext.request.contextPath}/mainCover/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy główne</a>
-    <a href="${pageContext.request.contextPath}/rider/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy dodatkowe</a>
-    <a href="${pageContext.request.contextPath}/product/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Produkty</a>
-    <a href="${pageContext.request.contextPath}/group/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Grupy</a>
+    <a href="${pageContext.request.contextPath}/mainCover/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy główne</a>
+    <a href="${pageContext.request.contextPath}/rider/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Umowy dodatkowe</a>
+    <a href="${pageContext.request.contextPath}/product/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Produkty</a>
+    <a href="${pageContext.request.contextPath}/group/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Grupy</a>
     <hr>
-    <a href="${pageContext.request.contextPath}/admin/all" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zmiana uprawnień</a>
-    <a href="${pageContext.request.contextPath}/admin/logout" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
+    <a href="${pageContext.request.contextPath}/admin/all"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zmiana uprawnień</a>
+    <a href="${pageContext.request.contextPath}/admin/logout"
+       class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge" onclick="return confirm
             ('Na pewno chcesz się wylogować ?')">Wylogowanie</a>
     <hr>
 

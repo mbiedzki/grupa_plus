@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="riders")
+@Table(name = "riders")
 public class Rider {
 
     @Id

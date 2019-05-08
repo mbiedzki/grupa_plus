@@ -11,7 +11,7 @@ import pl.coderslab.service.RiderService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(path="/rider", produces = "text/html; charset=UTF-8")
+@RequestMapping(path = "/rider", produces = "text/html; charset=UTF-8")
 @SessionAttributes({"deleteError"})
 public class RiderController {
     @Autowired
@@ -27,7 +27,7 @@ public class RiderController {
 
     @PostMapping(path = "/add")
     public String add(@Valid Rider rider, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "rider/add";
         }
         riderService.save(rider);
@@ -36,7 +36,7 @@ public class RiderController {
 
     //edit
     //*****************************************************************************
-    @GetMapping(path="/edit/{id}")
+    @GetMapping(path = "/edit/{id}")
     public String edit(Model model, @PathVariable Long id) {
         model.addAttribute("rider", riderService.findOne(id));
         return "rider/edit";
@@ -44,7 +44,7 @@ public class RiderController {
 
     @PostMapping(path = "/edit/{id}")
     public String save(@Valid Rider rider, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "rider/edit";
         }
         riderService.save(rider);

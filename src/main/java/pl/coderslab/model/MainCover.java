@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="mainCovers")
+@Table(name = "mainCovers")
 public class MainCover {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

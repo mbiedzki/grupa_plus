@@ -17,8 +17,8 @@ public class FileRead {
 
         try (Scanner scan = new Scanner(file)) {
             //read lines from file
-             data[0] = scan.nextLine();
-             data[1] = scan.nextLine();
+            data[0] = scan.nextLine();
+            data[1] = scan.nextLine();
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         }

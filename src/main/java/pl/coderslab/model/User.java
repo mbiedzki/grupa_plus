@@ -32,7 +32,7 @@ public class User {
     private String pesel;
 
     @NotNull
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @Valid
     private Address address;
 
@@ -49,7 +49,6 @@ public class User {
     private boolean admin;
 
     private boolean hr;
-
 
 
     public Long getId() {
@@ -69,7 +68,8 @@ public class User {
     }
 
     public String getFullName() {
-        return lastName+" "+firstName; }
+        return lastName + " " + firstName;
+    }
 
     public String getLastName() {
         return lastName;
