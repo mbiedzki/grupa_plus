@@ -22,12 +22,30 @@
     </div>
 </c:if>
 
+<c:if test="${emptyError==true}">
+    <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="emptyError" value="false" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <p> Obydwa pola muszą być wypełnione !</p>
+    </div>
+</c:if>
+
 <c:if test="${passwordError==true}">
     <div class="w3-panel w3-red w3-display-container">
         <span onclick="this.parentElement.style.display='none';
             <c:set var="passwordError" value="false" scope="session" />"
               class="w3-button w3-large w3-display-topright">&times;</span>
         <p> Podane hasła nie są takie same !</p>
+    </div>
+</c:if>
+
+<c:if test="${testUserError==true}">
+    <div class="w3-panel w3-red w3-display-container">
+        <span onclick="this.parentElement.style.display='none';
+            <c:set var="testUserError" value="false" scope="session" />"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+        <p> Nie można zmienić hasła dla użytkownika testowego !</p>
     </div>
 </c:if>
 
@@ -47,8 +65,8 @@
 
 <div align="center">
     <form method="post">
-        <input type="password" name="newPass1" placeholder="podaj hasło" class=w3-xlarge>
-        <input type="password" name="newPass2" placeholder="powtórz hasło" class=w3-xlarge><br><br>
+        <input type="password" name="newPass1" value="${newPass1}" placeholder="podaj hasło" class=w3-xlarge>
+        <input type="password" name="newPass2" value="${newPass2}" placeholder="powtórz hasło" class=w3-xlarge><br><br>
         <button type="submit" class="w3-button w3-xlarge w3-border w3-border-blue w3-round-xxlarge">Zmień hasło</button>
     </form>
 </div>

@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/password", produces = "text/html; charset=UTF-8")
-@SessionAttributes({"passwordChanged", "loggedUserType", "passwordError", "error"})
+@SessionAttributes({"passwordChanged", "loggedUserType", "passwordError", "error", "emptyError", "testUserError"})
 public class PasswordController {
     @Autowired
     private UserService userService;
@@ -36,11 +36,28 @@ public class PasswordController {
 
     @PostMapping(path = "/change")
     public String savePassword(@RequestParam String newPass1, @RequestParam String newPass2, HttpSession session, Model model) {
+
+        if (newPass1.equals("") || newPass2.equals("")) {
+            model.addAttribute("emptyError", true);
+            model.addAttribute("newPass1", newPass1);
+            model.addAttribute("newPass2", newPass2);
+            return "password/change";
+        }
+
         if (!newPass1.equals(newPass2)) {
             model.addAttribute("passwordError", true);
             return "redirect:/password/change";
         }
+
         Long userId = (Long) session.getAttribute("userId");
+        String pesel = userService.findOne(userId).getPesel();
+
+        if (pesel.equals("user") || pesel.equals("admin")) {
+            model.addAttribute("testUserError", true);
+            return "redirect:/password/change";
+        }
+
+
         User userToBeUpdated = userService.findOne(userId);
         userToBeUpdated.setPassword(userService.encryptPassword(newPass1));
         userService.save(userToBeUpdated);
