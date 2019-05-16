@@ -19,5 +19,5 @@ You can view current functionality for employee by loging with: "user" and passw
 
 Recent additions allow for pdf creation and email sending.
 
-External server address: http://biedzki.pl/grupa_plus-1.0/
+External server address: https://biedzki.pl/grupa_plus-1.0/
 
