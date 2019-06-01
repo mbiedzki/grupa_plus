@@ -43,7 +43,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/view")
-    public String send(@RequestParam String emailToSend, @RequestParam String summary, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response)
+    public String send(@RequestParam String emailToSend, @RequestParam String summary,
+                       Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response)
             throws IOException, DocumentException {
         Long userId = (Long) session.getAttribute("userId");
         String userName = userService.findOne(userId).getFullName();
@@ -52,7 +53,7 @@ public class EmployeeController {
 
         if (summary.equals("send")) {
             Mailer.send(emailToSend, userName, "Grupa Plus - Twoje umowy.",
-                    "GRUPA PLUS, poniżej załączamy Twoje umowy\nPozdrawiamy.\n\n");
+                    "GRUPA PLUS, poniżej załączamy Twoje umowy\nPozdrawiamy.\n\n", true);
             model.addAttribute("emailSent", true);
             return "redirect:/employee/view";
 

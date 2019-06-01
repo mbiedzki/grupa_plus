@@ -19,7 +19,8 @@ import java.util.Properties;
 
 public class Mailer {
 
-    public static void send(String recipientAddress, String userName, String subject, String message) throws IOException, DocumentException {
+    public static void send(String recipientAddress, String userName, String subject, String message,
+                            boolean withAttachment) {
 
         //Get properties object
         Properties props = new Properties();
@@ -54,19 +55,18 @@ public class Mailer {
 
             MimeBodyPart textBodyPart = new MimeBodyPart();
             textBodyPart.setText(message);
-
-            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource("/usr/local/bin/grupaplus/output.pdf");
-            attachmentBodyPart.setDataHandler(new DataHandler(source));
-            attachmentBodyPart.setFileName(userName + ".pdf");
-
             multipart.addBodyPart(textBodyPart);  // add the text part
-            multipart.addBodyPart(attachmentBodyPart); // add the attachement part*/
+
+            if(withAttachment) {
+                MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+                DataSource source = new FileDataSource("/usr/local/bin/grupaplus/output.pdf");
+                attachmentBodyPart.setDataHandler(new DataHandler(source));
+                attachmentBodyPart.setFileName(userName + ".pdf");
+                multipart.addBodyPart(attachmentBodyPart); // add the attachement part*/
+            }
 
             msg.setContent(multipart);
             Transport.send(msg);
-
-            System.out.println("message sent successfully");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
